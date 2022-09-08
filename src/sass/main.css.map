@@ -1,1 +1,11 @@
-{"version":3,"sourceRoot":"","sources":["main.scss","layout/_footer.scss","_variables.scss"],"names":[],"mappings":";AAAA;AAAA;AAAA;AAAA;ACAA;EACI,kBCKO;;;ADeX;EACI,aCtBQ;EDuBR;EACA","file":"main.css"}
+{
+    "version": 3,
+    "mappings": ";AAAA;;;GAGG;AEHH,AAAA,OAAO,CAAC;EACJ,gBAAgB,EDKT,OAAO;CCJjB;;AAmBD,AAAA,KAAK,CAAC;EACF,WAAW,EDtBH,QAAQ,EAAE,UAAU;ECuB5B,SAAS,EAAE,IAAI;EACf,KAAK,EAAE,OAAO;CACjB",
+    "sources": [
+        "main.scss",
+        "_variables.scss",
+        "layout/_footer.scss"
+    ],
+    "names": [],
+    "file": "main.css"
+}
