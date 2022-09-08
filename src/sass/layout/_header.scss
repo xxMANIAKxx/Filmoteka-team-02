@@ -1,0 +1,18 @@
+.navigation {
+    display: flex;
+
+    &__list {
+        position: relative;
+    }
+
+    &__link {
+
+        &:after{
+            content: "";
+            display: inline-block;
+            position: absolute;
+            width: 100%;
+        }
+    }
+
+}
