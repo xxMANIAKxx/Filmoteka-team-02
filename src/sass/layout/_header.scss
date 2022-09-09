@@ -1,13 +1,32 @@
+// === HEADER ===
+
+.header {
+    min-height: 230px;
+
+    background-size: cover;
+    background-position: center;
+}
+
+// === NAV ===
+
 .navigation {
     display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
 
     &__list {
         position: relative;
     }
 
+    &__item {
+        display: flex;
+        text-transform: uppercase;
+        align-items: center;
+    }
+
     &__link {
 
-        &:after{
+        &:after {
             content: "";
             display: inline-block;
             position: absolute;
@@ -16,3 +35,5 @@
     }
 
 }
+
+@media screen and (min-width: 768px) {}
