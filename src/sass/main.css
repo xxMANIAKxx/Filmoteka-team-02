@@ -3,6 +3,135 @@
  * Główny plik dla stylów.
  * Wszystkie partials podłączamy tutaj.
  */
+:root {
+  font-family: "Roboto", sans-serif;
+}
+
+body {
+  font-family: "Roboto", sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+  padding: 0;
+}
+
+ul,
+ol {
+  padding: 0;
+  margin: 0;
+}
+
+p {
+  margin: 0;
+  padding: 0;
+}
+
+a,
+a:visited {
+  text-decoration: none;
+  color: currentColor;
+}
+
+figcaption {
+  margin: 0;
+  padding: 0;
+}
+
+.list {
+  list-style: none;
+}
+
+.link {
+  text-decoration: none;
+}
+
+img {
+  display: block;
+}
+
+.container {
+  padding: 0 20px;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin: 0 auto;
+}
+
+@media screen and (min-width: 1280px) {
+  .container {
+    max-width: 1280px;
+  }
+}
+
+.main-header {
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1.167;
+  text-align: center;
+  color: #ffffff;
+}
+
+.icon {
+  display: inline-block;
+  fill: currentColor;
+}
+
+.nav__icon {
+  width: 24px;
+  height: 24px;
+}
+
+.btn {
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+}
+
+.header {
+  min-height: 230px;
+  background-size: cover;
+  background-position: center;
+}
+
+.navigation {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
+}
+
+.navigation__list {
+  position: relative;
+}
+
+.navigation__item {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  text-transform: uppercase;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.navigation__link:after {
+  content: "";
+  display: inline-block;
+  position: absolute;
+  width: 100%;
+}
+
 .footer {
   background-color: #F7F7F7;
 }
