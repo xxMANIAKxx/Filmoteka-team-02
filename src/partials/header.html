@@ -1,22 +1,26 @@
 <header class="header">
-    <div class="container header__container">
-        <a class="nav__logo" href="index.html">
-            <svg class="nav__icon icon">
-                <use href="/images/svg/symbol-defs.svg#icon-film"></use>
-            </svg><span class="nav__title">Filmoteka</span></a>
-    </div>
- 
-
-    <nav class="navigation">
-        <ul class="navigation__list">
-            <li class="navigation__item list">
-                <a class="navigation__link link" href="">home</a>
-            </li>
-            <li class="navigation__item list">
-                <a class="navigation__link link" href="">my library</a>
-            </li>
-        </ul>
-    </nav>
+    <div class="container nav__container">
+        <div class="nav">
+            <div class="nav__logo--container">
+                <a class="nav__logo" href="index.html">
+                    <svg class="nav__icon icon">
+                        <use href="/images/svg/symbol-defs.svg#icon-film"></use>
+                    </svg>
+                    <span class="nav__title main-header">Filmoteka</span>
+                </a>
+            </div>
+     
+            <nav class="navigation">
+                <ul class="navigation__list">
+                    <li class="navigation__item list">
+                        <a class="navigation__link link" href="">home</a>
+                    </li>
+                    <li class="navigation__item list">
+                        <a class="navigation__link link" href="">my library</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
 
     <div class="header__pane">
         <form class="header__pane-form" id="home">
@@ -33,6 +37,7 @@
             </button>
         </form>
     </div>
+    
 
     <div class="header__genre">
         <select class="genre">
@@ -55,5 +60,6 @@
             <option value="Western">Western</option>
         </select>
         </div>
+    </div>
     </div>
 </header>
