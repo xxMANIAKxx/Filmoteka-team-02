@@ -11,7 +11,8 @@
         "components/_btn.scss",
         "layout/_header.scss",
         "layout/_footer.scss",
-        "layout/_modal.scss"
+        "layout/_modal.scss",
+        "layout/_backdrop.scss"
     ],
     "names": [],
     "file": "main.css"
