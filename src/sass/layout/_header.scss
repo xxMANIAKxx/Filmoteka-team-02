@@ -142,3 +142,63 @@
         }
     }
 }
+
+// === SEARCH ===
+
+.header {
+
+    &__search-form {
+        margin-top: 41px;;
+    }
+}
+
+.search-form {
+    &__container {
+        position: relative;
+    
+        margin-left: auto;
+        margin-right: auto;
+    
+        @media screen and (min-width: 768px) {
+            max-width: 336px;
+        }
+    }
+
+    &__input {
+        width: 100%;
+        
+        background: transparent;
+        border-top: 0;
+        border-right: 0;
+        border-left: 0;
+        border-bottom: 0.5px solid $white;
+        outline: 0;
+    }
+
+    &__input,
+    &__input::placeholder {
+        padding-bottom: 4px;
+        
+        color: $white;
+        font-weight: 400;
+        font-size: 14px;
+        line-height: calc(16 / 14);
+    }
+    
+    &__btn {
+        position: absolute;
+        right: 0;
+        height: 100%;
+    }
+}
+
+// === GENRE OPTIONS  ===
+
+.header__genre {
+    display: flex;
+    align-items: center;
+    z-index: 100;
+    position: absolute;
+    left: 27px;
+    top: 170px;
+}
