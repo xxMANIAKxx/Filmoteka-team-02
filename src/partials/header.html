@@ -1,64 +1,61 @@
 <header class="header">
     <div class="container nav__container">
         <div class="nav">
-            <div class="nav__logo--container">
-                <a class="nav__logo" href="index.html">
-                    <svg class="nav__icon icon">
-                        <use href="/images/svg/symbol-defs.svg#icon-film"></use>
-                    </svg>
-                    <span class="nav__title main-header">Filmoteka</span>
-                </a>
-            </div>
-     
-            <nav class="navigation">
-                <ul class="navigation__list">
-                    <li class="navigation__item list">
-                        <a class="navigation__link link" href="">home</a>
-                    </li>
-                    <li class="navigation__item list">
-                        <a class="navigation__link link" href="">my library</a>
-                    </li>
-                </ul>
-            </nav>
+
+        <!-- LOGO -->
+        <div class="nav__logo--container">
+            <a class="nav__logo" href="index.html">
+                <svg class="nav__icon icon">
+                    <use href="/images/svg/symbol-defs.svg#icon-film"></use>
+                </svg>
+                <span class="nav__title main-header">Filmoteka</span>
+            </a>
         </div>
 
-    <div class="header__pane">
-        <form class="header__pane-form" id="home">
-            <label class="header__form-label">
-            <input
-                type="text"
-                name="searchQuery"
-                placeholder="Movie search"
-                class="header__form-input"
-            />
-        </label>
-            <button type="submit" class="header__form-btn btn">
-                <i class=""></i>
+        <!-- NAVIGATION      -->
+        <nav class="navigation">
+            <ul class="navigation__list">
+                <li class="navigation__item list">
+                    <a class="navigation__link link" href="">home</a>
+                </li>
+                <li class="navigation__item list">
+                    <a class="navigation__link link" href="">my library</a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+
+    <!-- SEARCH INPUT -->
+    <div class="header__search-form">
+        <form class="search-form__container" autocomplete="off" id="home">
+            <label class="search-form__label">
+                <input
+                    type="text"
+                    name="searchQuery"
+                    placeholder="Movie search"
+                    class="search-form__input"
+                />
+            </label>
+            <button class="search-form__btn btn js-form-btn" type="submit">
+                <svg class="search-form__btn-icon" width="12" height="12">
+                    <use href="./images/svg/symbol-defs.svg#icon-search"></use>
+                </svg>
             </button>
+            <div class="search-error search-error--hidden"></div>
         </form>
     </div>
-    
 
-    <div class="header__genre">
-        <select class="genre">
-            <option>Choose genre</option>
-            <option value="Action">Action</option>
-            <option value="Adventure">Adventure</option>
-            <option value="Animation">Animation</option>
-            <option value="Comedy">Comedy</option>
-            <option value="Crime">Crime</option>
-            <option value="Documentary">Documentary</option>
-            <option value="Drama">Drama</option>
-            <option value="Family">Family</option>
-            <option value="Fantasy">Fantasy</option>
-            <option value="History">History</option>
-            <option value="Horror">Horror</option>
-            <option value="Music">Music</option>
-            <option value="Romance">Romance</option>
-            <option value="Science Fiction">Sci-Fi</option>
-            <option value="Thriller">Thriller</option>
-            <option value="Western">Western</option>
-        </select>
+    <!-- LIBRARY BUTTONS -->
+    <!-- <div class="library visually-hidden">
+      <button class="library__btn btn js-btn-watched">Watched</button>
+      <button class="library__btn btn js-btn-queue">Queue</button>
+    </div> -->
+
+    <!-- GENRE -->
+        <div class="header__genre">
+            <select class="genre">
+                <option class="header__genre-option" value="">Choose genre</option>
+            </select>
         </div>
     </div>
     </div>
