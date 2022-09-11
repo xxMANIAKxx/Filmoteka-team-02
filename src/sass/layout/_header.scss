@@ -49,12 +49,12 @@
     display: flex;
     align-items: flex-end;
     justify-content: space-between;
-    
+
     &__logo {
         display: flex;
         align-items: center;
     }
-    
+
     &__title {
         color: $white;
         margin-left: 10px;
@@ -76,7 +76,7 @@
         color: $white;
         position: relative;
         display: flex;
-        
+
     }
 
     &__item {
@@ -140,5 +140,83 @@
         &__container {
             padding-top: 41px;
         }
+    }
+}
+
+// === SEARCH ===
+
+.header {
+
+    &__search-form {
+        margin-top: 41px;
+        ;
+    }
+}
+
+.search-form {
+    &__container {
+        position: relative;
+
+        margin-left: auto;
+        margin-right: auto;
+
+        @media screen and (min-width: 768px) {
+            max-width: 336px;
+        }
+    }
+
+    &__input {
+        width: 100%;
+
+        background: transparent;
+        border-top: 0;
+        border-right: 0;
+        border-left: 0;
+        border-bottom: 0.5px solid $white;
+        outline: 0;
+        transition: $shift;
+
+        &:focus,
+        &:hover {
+            border-bottom: 1px solid $orange;
+        }
+    }
+
+    &__input,
+    &__input::placeholder {
+        padding-bottom: 4px;
+
+        color: $white;
+        font-weight: 400;
+        font-size: 14px;
+        line-height: calc(16 / 14);
+    }
+
+    &__btn {
+        position: absolute;
+        height: 100%;
+        padding: 3px;
+        bottom: 0;
+        background: transparent;
+        outline: none;
+        right: 0px;
+    }
+}
+
+// === GENRE OPTIONS  ===
+
+.header__genre {
+    display: flex;
+    align-items: center;
+    z-index: 100;
+    position: absolute;
+    left: 27px;
+    top: 170px;
+
+    &>select {
+        width: 117px;
+        font-size: 12px;
+        border-radius: 8px;
+        height: 35px;
     }
 }
