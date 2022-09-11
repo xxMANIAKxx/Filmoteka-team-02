@@ -1,5 +1,5 @@
 <section class="modal">
-    <div class="backdrop" data-modal>
+    <div class="backdrop is-hidden" data-modal>
         <ul class="modal__pic">
             <li class="pic">
                 <picture>
@@ -24,13 +24,13 @@
         <ul class="modal__description">
             <ul class="description__list">
                 <li class="description__film">A FISTFUL OF LEAD</li>
-                <li><button type="button" class="close-btn" data-modal-close>X
+                <button type="button" class="close-btn" data-modal-close>X
                     <!-- <svg width="14" height="14">
                         <use href="images/icons.svg#icon-close"></use>
                     </svg> -->
-                </button></li>
+                </button>
                     <ul class="description__vote">
-                        <li class="vote__text">Vote/Votes</li>
+                        <li class="vote__text">Vote / Votes</li>
                         <li class="vote__value"><span class="vote__mark">7.3</span>/ 1260</li>
                     </ul>
                     <ul class="description__popularity">
@@ -83,7 +83,7 @@
         font-size: 30px;
         line-height: 35px;
         color: #000000;
-        padding-bottom:20px;
+        padding-bottom: 20px;
     }
 
     .description__vote,
@@ -162,6 +162,7 @@
         text-align: center;
         text-transform: uppercase;
         color: #ffffff;
+        margin-top:21px;
     }
 
     .queue-btn{
@@ -181,15 +182,18 @@
         text-transform: uppercase;
         color: #000000;
         margin-left:15px;
+        margin-top:21px;
     }
 
     .backdrop{
-        position:fixed;
-        top:0;
-        left:0;
-        width:100%;
-        height:100%;
+        position:absolute;
+        top:100px;
+        left:71px;
+        width:882px;
+        height:568px;
         background-color:#FFFFFF;
+        padding:50px 30px 40.2px 30px;
+        z-index:1;
         opacity:1;
         transition-property: opacity;
         transition-duration: 1000ms;
@@ -205,9 +209,9 @@
         align-items: center;
         justify-content: center;
         border:none;
-        position: relative;
-        bottom:50px;
-        left:300px;
+        position: absolute;
+        top:18px;
+        right:18px;
         width: 14px;
         height: 14px;
         background-color: var(--close-color);
@@ -215,7 +219,6 @@
         transition-property: fill;
         transition-duration: 250ms;
         transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-
     }
   
 </style>
