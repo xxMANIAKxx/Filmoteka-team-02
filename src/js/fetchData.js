@@ -100,3 +100,5 @@ inputFormButton.addEventListener ('click', async event => {
     }
 });
 
+
+export{fetchFirstLoadMovies}
