@@ -2,56 +2,51 @@
     <div class="container nav__container">
         <div class="nav">
 
-        <!-- LOGO -->
-        <div class="nav__logo--container">
-            <a class="nav__logo" href="index.html">
-                <svg class="nav__icon icon">
-                    <use href="/images/svg/symbol-defs.svg#icon-film"></use>
-                </svg>
-                <span class="nav__title main-header">Filmoteka</span>
-            </a>
+            <!-- LOGO -->
+            <div class="nav__logo--container">
+                <a class="nav__logo" href="index.html">
+                    <svg class="nav__icon icon">
+                        <use href="/images/svg/symbol-defs.svg#icon-film"></use>
+                    </svg>
+                    <span class="nav__title main-header">Filmoteka</span>
+                </a>
+            </div>
+
+            <!-- NAVIGATION      -->
+            <nav class="navigation">
+                <ul class="navigation__list">
+                    <li class="navigation__item list">
+                        <a class="navigation__link link" href="index.html">home</a>
+                    </li>
+                    <li class="navigation__item list">
+                        <a class="navigation__link link" href="library.html">my library</a>
+                    </li>
+                </ul>
+            </nav>
         </div>
 
-        <!-- NAVIGATION      -->
-        <nav class="navigation">
-            <ul class="navigation__list">
-                <li class="navigation__item list">
-                    <a class="navigation__link link" href="">home</a>
-                </li>
-                <li class="navigation__item list">
-                    <a class="navigation__link link" href="">my library</a>
-                </li>
-            </ul>
-        </nav>
-    </div>
+        <!-- SEARCH INPUT -->
+        <div class="header__search-form">
+            <form class="search-form__container" autocomplete="off" id="home">
+                <label class="search-form__label">
+                    <input type="text" name="searchQuery" placeholder="Movie search" class="search-form__input" />
+                </label>
+                <button class="search-form__btn btn js-form-btn" type="submit">
+                    <svg class="search-form__btn-icon" width="12" height="12">
+                        <use href="./images/svg/symbol-defs.svg#icon-search"></use>
+                    </svg>
+                </button>
+                <div class="search-error search-error--hidden"></div>
+            </form>
+        </div>
 
-    <!-- SEARCH INPUT -->
-    <div class="header__search-form">
-        <form class="search-form__container" autocomplete="off" id="home">
-            <label class="search-form__label">
-                <input
-                    type="text"
-                    name="searchQuery"
-                    placeholder="Movie search"
-                    class="search-form__input"
-                />
-            </label>
-            <button class="search-form__btn btn js-form-btn" type="submit">
-                <svg class="search-form__btn-icon" width="12" height="12">
-                    <use href="./images/svg/symbol-defs.svg#icon-search"></use>
-                </svg>
-            </button>
-            <div class="search-error search-error--hidden"></div>
-        </form>
-    </div>
-
-    <!-- LIBRARY BUTTONS -->
-    <!-- <div class="library visually-hidden">
+        <!-- LIBRARY BUTTONS -->
+        <!-- <div class="library visually-hidden">
       <button class="library__btn btn js-btn-watched">Watched</button>
       <button class="library__btn btn js-btn-queue">Queue</button>
     </div> -->
 
-    <!-- GENRE -->
+        <!-- GENRE -->
         <div class="header__genre">
             <select class="genre">
                 <option class="header__genre-option" value="">Choose genre</option>
