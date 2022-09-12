@@ -207,11 +207,10 @@
 
 .header__genre {
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     z-index: 100;
     position: absolute;
-    left: 27px;
-    top: 170px;
+    margin-top: 15px;
 
     &>select {
         width: 117px;
