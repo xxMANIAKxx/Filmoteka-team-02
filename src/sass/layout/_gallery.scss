@@ -1,0 +1,32 @@
+.movie-card{
+    list-style: none;
+    display:inline-block;
+    margin-right:15px;
+    margin-top:30px;
+    flex-basis: calc(100% / 3 - 20px);
+}
+
+.movie-card__img{
+    width:274px;
+    height:398px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    
+    display:flex;
+}
+
+.movie-card__title{
+    font-weight: 500px;
+    font-size:12px;
+    line-height:16px;
+    line-height:14.06px;
+    color:#000000;
+}
+
+.movie-card__info{
+    font-weight: 500px;
+    font-size:12px;
+    line-height:16px;
+    line-height:14.06px;
+    color:#ff6b08;
+}
