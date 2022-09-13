@@ -1,31 +1,29 @@
+.content::after {
+  display: none;
+}
+
 .loader {
-  top: 0;
-  left: 0;
   width: 100vw;
   height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: #ddd;
-  transition: opacity 0.75s, visibility 0.5s;
+  overflow: hidden;
+  background-color: #9e98a2;
 }
 
-.loader-hidden {
-  opacity: 0;
-  visibility: hidden;
-}
-
-.loader::after {
-  content: '';
-  width: 75px;
-  height: 75px;
-  border: 15px solid #dddd;
+.loader > div {
+  height: 100px;
+  width: 100px;
+  border: 15px solid #9e98a2;
   border-top-color: #0082bc;
+  position: absolute;
+  margin: auto;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
   border-radius: 50%;
-  animation: loading 0.75s ease infinite;
+  animation: spin 1s infinite linear;
 }
-
-@keyframes loading {
+@keyframes spin {
   from {
     transform: rotate(0turn);
   }

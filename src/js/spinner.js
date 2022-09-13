@@ -1,9 +1,4 @@
-window.addEventListener('load', () => {
-  const loader = document.querySelector('.loader');
-
-  loader.classList.add('loader-hidden');
-
-  loader.addEventListener('transitionEnd', () => {
-    document.body.removeChild('loader');
-  });
+$(window).on('load', function () {
+  $('.loader').fadeOut(400);
+  $('.content').fadeIn(400);
 });
