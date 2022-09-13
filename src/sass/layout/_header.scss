@@ -261,11 +261,6 @@
 
   & div {
     display: flex;
-    align-items: flex-start;
-    z-index: 100;
-    position: absolute;
-    margin-top: 15px;
-
     gap: 15px;
   }
   &__btn {
