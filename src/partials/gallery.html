@@ -1,25 +1,20 @@
 <section class="gallery">
 
     <div class="container">
-        <ul class="gallery_movies"></ul>
+        <ul class="gallery_movies">
+            <li class="movie-card" >
+                <img class="movie-card__img" src="https://image.tmdb.org/t/p/w500/${poster_path}" alt="${title}" loading="lazy" />
+                <h2 class="movie-card__title">${title}</h2>
+                <div class="movie-card__info">
+                    <p class="movie-card__genre-and-year">
+                        <span class="movie-card__genre">${genre_ids}</span>
+                        <span class="movie-card__year">${release_date}</span>
+                    </p>
+                    <p class="movie-card__vote-average">${vote_average}</p>
+                </div>
+            </li>
+        </ul>
         <div class="pagination_buttons"></div>
     </div>
-
-
-<!-- Movie card -->
-<!-- PONIŻEJ DIVY Z KLASAMI DLA OSOBY, KTÓRA BĘDZIE ROBIŁA STYLOWANIE KARTY/GALERII -->
-<!--
-    <li class="movie-card">
-        <img class="movie-card__img" src="https://image.tmdb.org/t/p/w500/${poster_path}" alt="${title}" loading="lazy" />
-        <h2 class="movie-card__title">${title}</h2>
-        <div class="movie-card__info">
-            <p class="movie-card__genre-and-year">
-                <span class="movie-card__genre">${genre_ids}</span>
-                <span class="movie-card__year">${release_date}</span>
-            </p>
-            <p class="movie-card__vote-average">${vote_average}</p>
-        </div>
-    </li>
--->
 
 </section>
