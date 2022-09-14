@@ -1,4 +1,4 @@
-const inputFormTitle = document.querySelector('.search-form__input');
+ const inputFormTitle = document.querySelector('.search-form__input');
 const inputFormButton = document.querySelector('.search-form__btn');
 const inputFormGenreChange = document.querySelector('.header__genre-option');
 

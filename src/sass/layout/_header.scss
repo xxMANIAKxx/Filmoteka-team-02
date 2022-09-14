@@ -239,7 +239,6 @@
 .header__genre {
   display: flex;
   align-items: center;
-  z-index: 100;
   position: absolute;
   left: 27px;
   top: 170px;
@@ -250,6 +249,10 @@
     border-radius: 8px;
     height: 35px;
   }
+}
+
+.genres {
+  transition: $shift;
 }
 
 // === LIBRARY btns ===
