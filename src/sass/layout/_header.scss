@@ -252,6 +252,10 @@
   }
 }
 
+.genres {
+  transition: $shift;
+}
+
 // === LIBRARY btns ===
 .library {
   display: flex;

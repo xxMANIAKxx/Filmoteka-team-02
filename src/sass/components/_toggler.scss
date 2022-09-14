@@ -65,8 +65,13 @@ body.dark-theme {
     background-color: $gray;
     color: $white;
 
-    .footer__container {
-        background-color: #252525;
+    .genre {
+        background-color: $eerie;
+        color: $white;
+    }
+
+    .footer {
+        background-color: $eerie;
         color: $white;
     }
 
@@ -77,5 +82,8 @@ body.dark-theme {
 
     .movie-card__title {
         color: $white;
+        font-weight: 400;
     }
+
+
 }

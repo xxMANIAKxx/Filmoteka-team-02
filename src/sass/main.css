@@ -9,8 +9,8 @@
 
 body {
   font-family: "Roboto", sans-serif;
-  -webkit-transition: background-color 350ms ease-in-out;
-  transition: background-color 350ms ease-in-out;
+  -webkit-transition: 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 h1,
@@ -233,7 +233,12 @@ body.dark-theme {
   color: #ffffff;
 }
 
-body.dark-theme .footer__container {
+body.dark-theme .genre {
+  background-color: #252525;
+  color: #ffffff;
+}
+
+body.dark-theme .footer {
   background-color: #252525;
   color: #ffffff;
 }
@@ -245,6 +250,7 @@ body.dark-theme .modal {
 
 body.dark-theme .movie-card__title {
   color: #ffffff;
+  font-weight: 400;
 }
 
 .content::after {
@@ -568,6 +574,11 @@ body.dark-theme .movie-card__title {
   font-size: 12px;
   border-radius: 8px;
   height: 35px;
+}
+
+.genres {
+  -webkit-transition: 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .library {
