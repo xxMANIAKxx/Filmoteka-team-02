@@ -4,7 +4,10 @@
 
 body {
     font-family: $main-font;
+    transition: background-color 350ms ease-in-out;
 }
+
+
 
 h1,
 h2,

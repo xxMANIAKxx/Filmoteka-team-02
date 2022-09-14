@@ -53,3 +53,29 @@
 .header__toggle-input:checked+.header__toggle-label+.background {
     background: #242424;
 }
+
+// THEME
+
+body.light-theme {
+    background-color: $white;
+    color: $gray;
+}
+
+body.dark-theme {
+    background-color: $gray;
+    color: $white;
+
+    .footer__container {
+        background-color: #252525;
+        color: $white;
+    }
+
+    .modal {
+        background-color: $gray;
+        color: $white;
+    }
+
+    .movie-card__title {
+        color: $white;
+    }
+}
