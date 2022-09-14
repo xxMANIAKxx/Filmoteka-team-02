@@ -65,25 +65,25 @@ body.dark-theme {
     background-color: $gray;
     color: $white;
 
-    .genre {
-        background-color: $eerie;
+    .footer,
+    .genre,
+    .modal,
+    .movie-card__title,
+    .description__film,
+    .description__text,
+    .popularity__value,
+    .title__value,
+    .genre__value {
         color: $white;
     }
 
-    .footer {
+    .footer,
+    .genre,
+    .backdrop {
         background-color: $eerie;
-        color: $white;
-    }
-
-    .modal {
-        background-color: $gray;
-        color: $white;
     }
 
     .movie-card__title {
-        color: $white;
         font-weight: 400;
     }
-
-
 }
