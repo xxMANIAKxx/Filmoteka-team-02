@@ -1,3 +1,4 @@
+import utils from './utils';
 (() => {
   const refs = {
     openModalBtn: document.querySelector('[data-modal-open]'),
@@ -11,4 +12,6 @@
   function toggleModal() {
     refs.modal.classList.toggle('is-hidden');
   }
+  // utils.addToLibrary(addToWatchedButton.dataset.id, addToWatchedButton.dataset.type, 'watchedList');
+  // utils.addToLibrary(addToQueueButton.dataset.id, addToQueueButton.dataset.type, 'queueList');
 })();
