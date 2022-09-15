@@ -1,7 +1,6 @@
 const inputFormTitle = document.querySelector('.search-form__input');
 const inputFormButton = document.querySelector('.search-form__btn');
 const inputFormGenreChange = document.querySelector('.header__genre-option');
-
 const galleryOfMovies = document.querySelector('.gallery_movies');
 const paginationButtons = document.querySelector('.pagination_buttons');
 
@@ -27,7 +26,6 @@ const fetchFirstLoadMovies = async () => {
   const firstLoadMovies = await response.json();
   return firstLoadMovies;
 };
-fetchFirstLoadMovies;
 
 // Scenariusz 2: SEARCH MOVIE krok 1
 // Pobranie danych do galerii, która wyświetla się po WPISANIU FILMU
@@ -38,7 +36,6 @@ const fetchInputMovieTitle = async movieTitle => {
   const responseObject = await response.json();
   return responseObject;
 };
-fetchInputMovieTitle;
 
 // Pobranie pojedyńczego filmu/serialu przez Id. Opcje dla type to domyślnie 'movie' (parametr opcjonalny) lub serial 'tv'.
 const fetchMovieById = async (movieId, type = 'movie') => {
@@ -60,13 +57,16 @@ let renderMoviesFirstLoad = data => {
         media_type,
         release_date,
         vote_average,
+        name,
         original_name,
         id,
       }) => {
         return `
                 <li class="movie-card" data-id="${id}" data-type="${media_type}">
-                    <img class="movie-card__img" src="https://image.tmdb.org/t/p/w500/${poster_path}" alt="${title}" loading="lazy" />
-                    <h2 class="movie-card__title">${title}</h2>
+                    <img class="movie-card__img" src="https://image.tmdb.org/t/p/w500/${poster_path}" alt="${
+          title === undefined ? name : title
+        }" loading="lazy" />
+                    <h2 class="movie-card__title">${title === undefined ? name : title}</h2>
                     <div class="movie-card__info">
                         <p class="movie-card__genre-and-year">
                             <span class="movie-card__genre">${genre_ids}</span>
@@ -97,12 +97,15 @@ let renderMoviesInputTitle = data => {
         release_date,
         vote_average,
         original_name,
+        name,
         id,
       }) => {
         return `
                 <li class="movie-card" data-id="${id}" data-type="${media_type}">
-                    <img class="movie-card__img" src="https://image.tmdb.org/t/p/w500/${poster_path}" alt="${title}" loading="lazy" />
-                    <h2 class="movie-card__title">${title}</h2>
+                    <img class="movie-card__img" src="https://image.tmdb.org/t/p/w500/${poster_path}" alt="${
+          title === undefined ? name : title
+        }" loading="lazy" />
+                    <h2 class="movie-card__title">${title === undefined ? name : title}</h2>
                     <div class="movie-card__info">
                         <p class="movie-card__genre-and-year">
                             <span class="movie-card__genre">${genre_ids}</span>
@@ -118,73 +121,6 @@ let renderMoviesInputTitle = data => {
   return galleryOfMovies.insertAdjacentHTML('beforeend', markup);
 };
 
-// Scenariusz 1: FIRST LOAD krok 3
-// Nasłuchiwanie pierwszego załadowania strony lub przeładowania
-window.addEventListener('load', async event => {
-  event.preventDefault();
-  if (window.location.href.includes('index.html')) {
-    try {
-      const array = await fetchFirstLoadMovies();
-      const arrayMovies = [];
-
-      array.results.forEach(async movie => {
-        arrayMovies.push(movie);
-      });
-
-      renderMoviesFirstLoad(arrayMovies);
-      console.log(arrayMovies);
-
-      const totalPages = await array.total_pages;
-      const totalMovies = await array.total_results;
-
-      console.log(`Total pages: ${totalPages}`);
-      console.log(`Total results: ${totalMovies}`);
-
-      pagination(totalPages, title);
-
-      // arrayMovies.forEach(async movie => {
-      //   console.log(movie);
-      // });
-    } catch (error) {
-      console.error(error);
-    }
-  }
-});
-
-// Scenariusz 2: SEARCH MOVIE krok 3
-// Nasłuchiwanie zdarzenia wpisania filmu w input
-inputFormButton.addEventListener('click', async event => {
-  event.preventDefault();
-
-  const movieTitle = inputFormTitle.value.trim();
-
-  try {
-    const array = await fetchInputMovieTitle(movieTitle);
-    const arrayMovies = [];
-
-    array.results.forEach(async movie => {
-      arrayMovies.push(movie);
-    });
-
-    renderMoviesInputTitle(arrayMovies);
-    console.log(arrayMovies);
-
-    const totalPages = await array.total_pages;
-    const totalMovies = await array.total_results;
-
-    console.log(`Total pages: ${totalPages}`);
-    console.log(`Total results: ${totalMovies}`);
-
-    pagination(totalPages, title);
-
-    // arrayMovies.forEach(async movie => {
-    //   console.log(movie);
-    // });
-  } catch (error) {
-    console.error(error);
-  }
-});
-
 const pagination = async (totalPages, title) => {
   paginationButtons = '';
   if (totalPages >= 1) {
@@ -196,4 +132,16 @@ const pagination = async (totalPages, title) => {
   }
 };
 
-export { fetchFirstLoadMovies, fetchMovieById };
+export {
+  inputFormButton,
+  inputFormTitle,
+  inputFormGenreChange,
+  galleryOfMovies,
+  paginationButtons,
+  fetchFirstLoadMovies,
+  fetchInputMovieTitle,
+  fetchMovieById,
+  renderMoviesFirstLoad,
+  renderMoviesInputTitle,
+  pagination,
+};
