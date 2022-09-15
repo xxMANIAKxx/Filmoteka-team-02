@@ -52,9 +52,4 @@ const addToLibrary = (movieId, type, listType = 'watchedList') => {
   return save(listType, libraryList);
 };
 
-export default {
-  save,
-  load,
-  remove,
-  addToLibrary,
-};
+export { save, load, remove, addToLibrary };
