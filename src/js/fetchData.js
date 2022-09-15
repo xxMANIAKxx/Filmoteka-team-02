@@ -69,7 +69,7 @@ let renderMoviesFirstLoad = async data => {
                             <span class="movie-card__genre">${genre_ids.map(id => genreName[id]).join(', ')}</span>
                             <span class="movie-card__year">${release_date || first_air_date}</span>
                         </p>
-                        <p class="movie-card__vote-average">${vote_average}</p>
+                        <p class="movie-card__vote-average">${vote_average.toFixed(2)}</p>
                     </div>
                 </li>
             `;
@@ -96,7 +96,7 @@ let renderMoviesInputTitle = async data => {
                             <span class="movie-card__genre">${genre_ids.map(id => genreName[id]).join(', ')}</span>
                             <span class="movie-card__year">${release_date || first_air_date}</span>
                         </p>
-                        <p class="movie-card__vote-average">${vote_average}</p>
+                        <p class="movie-card__vote-average">${vote_average.toFixed(2)}</p>
                     </div>
                 </li>
             `},
@@ -128,10 +128,15 @@ const getAllGenres = async () => {
             ])
         ).values(),
     ];
+  allGenresListMain = allGenresList;
     return allGenresList;
 };
-
 let genreResponse;
+
+let allGenresListMain;
+console.log(allGenresListMain);
+
+
 
 const getMovieGenresNames = async () => {
     if (!genreResponse) {
