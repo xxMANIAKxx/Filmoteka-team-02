@@ -1,17 +1,16 @@
+import { refs } from './refs.js';
+
 const Theme = {
   LIGHT: 'light-theme',
   DARK: 'dark-theme',
 };
 
-const input = document.querySelector('#darkmode-toggle');
-const body = document.querySelector('body');
-
 loadTheme();
-input.addEventListener('change', changeTheme);
+refs.input.addEventListener('change', changeTheme);
 
 function changeTheme() {
-    body.classList.toggle(Theme.DARK);
-    body.classList.toggle(Theme.LIGHT);
+    refs.body.classList.toggle(Theme.DARK);
+    refs.body.classList.toggle(Theme.LIGHT);
 
     getCurrentTheme(body.classList);
 }
@@ -23,9 +22,9 @@ function getCurrentTheme(currentTheme) {
 function loadTheme() {
   const savedTheme = localStorage.getItem('Theme');
   if (savedTheme === Theme.DARK) {
-    body.classList.add(savedTheme);
-    input.checked = true;
+    refs.body.classList.add(savedTheme);
+    refs.input.checked = true;
   } else {
-    body.classList.add(Theme.LIGHT);
+    refs.body.classList.add(Theme.LIGHT);
   }
 }
