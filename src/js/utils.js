@@ -37,13 +37,12 @@ const addToLibrary = (movieId, type, listType = 'watchedList') => {
 
   let alreadyInList = false;
   libraryList.forEach(movie => {
-    if (movie.movieId === movieId && movie.type === type) {
+    if (movie.movieId == movieId && movie.type === type) {
       alreadyInList = true;
-      alert('Movie already on the list.');
     }
   });
 
-  if (alreadyInList) return;
+  if (alreadyInList) return alert('Movie already on the list.');
 
   libraryList.push({
     movieId,

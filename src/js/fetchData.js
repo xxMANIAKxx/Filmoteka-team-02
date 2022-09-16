@@ -93,15 +93,14 @@ let renderMoviesInputTitle = data => {
         original_title,
         title,
         genre_ids,
-        media_type,
         release_date,
         vote_average,
-        original_name,
         name,
+        original_name,
         id,
       }) => {
         return `
-                <li class="movie-card" data-id="${id}" data-type="${media_type}">
+                <li class="movie-card" data-id="${id}" data-type="movie">
                     <img class="movie-card__img" src="https://image.tmdb.org/t/p/w500/${poster_path}" alt="${
           title === undefined ? name : title
         }" loading="lazy" />
