@@ -59,12 +59,28 @@ let renderMoviesFirstLoad = async data => {
   const genreName = await getMovieGenresNames();
   galleryOfMovies.innerHTML = '';
   const markup = data
-        .map(({poster_path, title, name, genre_ids, release_date, first_air_date, vote_average, id, media_type, original_title, original_name}) => {
+    .map(
+      ({
+        poster_path, 
+        title,
+        name,
+        genre_ids,
+        release_date,
+        first_air_date,
+        vote_average,
+        id,
+        media_type,
+        original_title,
+        original_name
+      }) => {
         return `
                 <li class="movie-card" data-id="${id}" data-type="${media_type}">
-                    <img class="movie-card__img" src="https://image.tmdb.org/t/p/w500/${poster_path}" alt="poster of "${
-          title === undefined ? name : title
-        }"" loading="lazy" />
+                    <img
+                      class="movie-card__img"
+                      src="https://image.tmdb.org/t/p/w500/${poster_path}" 
+                      alt="poster of "${title === undefined ? name : title}"" 
+                      loading="lazy" 
+                    />
                     <h2 class="movie-card__title">${title === undefined ? name : title}</h2>
                     <div class="movie-card__info">
                         <p class="movie-card__genre-and-year">
@@ -92,21 +108,26 @@ let renderMoviesInputTitle = async data => {
   const markup = data
     .map(
       ({
-        poster_path,
-        original_title,
+        poster_path, 
         title,
+        name,
         genre_ids,
         release_date,
+        first_air_date,
         vote_average,
-        name,
-        original_name,
         id,
+        media_type,
+        original_title,
+        original_name
       }) => {
         return `
                 <li class="movie-card" data-id="${id}" data-type="movie">
-                    <img class="movie-card__img" src="https://image.tmdb.org/t/p/w500/${poster_path}" alt="${
-          title === undefined ? name : title
-        }" loading="lazy" />
+                    <img
+                      class="movie-card__img"
+                      src="https://image.tmdb.org/t/p/w500/${poster_path}" 
+                      alt="${title === undefined ? name : title}" 
+                      loading="lazy" 
+                    />
                     <h2 class="movie-card__title">${title === undefined ? name : title}</h2>
                     <div class="movie-card__info">
                         <p class="movie-card__genre-and-year">
