@@ -61,12 +61,16 @@ let renderMoviesFirstLoad = async data => {
   const markup = data
         .map(({poster_path, title, name, genre_ids, release_date, first_air_date, vote_average, id, media_type, original_title, original_name}) => {
         return `
-                <li class="movie-card">
-                    <img class="movie-card__img" src="https://image.tmdb.org/t/p/w500/${poster_path}" alt="poster of "${title === undefined ? name : title}"" loading="lazy" />
+                <li class="movie-card" data-id="${id}" data-type="${media_type}">
+                    <img class="movie-card__img" src="https://image.tmdb.org/t/p/w500/${poster_path}" alt="poster of "${
+          title === undefined ? name : title
+        }"" loading="lazy" />
                     <h2 class="movie-card__title">${title === undefined ? name : title}</h2>
                     <div class="movie-card__info">
                         <p class="movie-card__genre-and-year">
-                            <span class="movie-card__genre">${genre_ids.map(id => genreName[id]).join(', ')}</span>
+                            <span class="movie-card__genre">${genre_ids
+                              .map(id => genreName[id])
+                              .join(', ')}</span>
                             <span class="movie-card__year">${release_date || first_air_date}</span>
                         </p>
                         <p class="movie-card__vote-average">${vote_average.toFixed(2)}</p>

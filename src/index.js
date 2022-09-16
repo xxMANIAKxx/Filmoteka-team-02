@@ -25,7 +25,7 @@ window.addEventListener('load', async event => {
       arrayMovies.push(movie);
     });
 
-    renderMoviesFirstLoad(arrayMovies);
+    await renderMoviesFirstLoad(arrayMovies);
     let liElements = document.querySelectorAll('.movie-card');
     liElements.forEach(element => {
       element.addEventListener('click', () => {
@@ -65,7 +65,7 @@ inputFormButton.addEventListener('click', async event => {
       arrayMovies.push(movie);
     });
 
-    renderMoviesInputTitle(arrayMovies);
+   await renderMoviesInputTitle(arrayMovies);
     let liElements = document.querySelectorAll('.movie-card');
     liElements.forEach(element => {
       element.addEventListener('click', target => {
