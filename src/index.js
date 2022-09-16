@@ -7,6 +7,7 @@ import {
   renderMoviesFirstLoad,
   renderMoviesInputTitle,
 } from './js/fetchData';
+import { getMovieAndDisplayModal } from './js/modal';
 import './sass/main.scss';
 
 fetchFirstLoadMovies;
@@ -25,6 +26,12 @@ window.addEventListener('load', async event => {
     });
 
     renderMoviesFirstLoad(arrayMovies);
+    let liElements = document.querySelectorAll('.movie-card');
+    liElements.forEach(element => {
+      element.addEventListener('click', () => {
+        getMovieAndDisplayModal(element.dataset.id, element.dataset.type);
+      });
+    });
     console.log(arrayMovies);
 
     const totalPages = await array.total_pages;
@@ -59,6 +66,12 @@ inputFormButton.addEventListener('click', async event => {
     });
 
     renderMoviesInputTitle(arrayMovies);
+    let liElements = document.querySelectorAll('.movie-card');
+    liElements.forEach(element => {
+      element.addEventListener('click', target => {
+        getMovieAndDisplayModal(element.dataset.id, element.dataset.type);
+      });
+    });
     console.log(arrayMovies);
 
     const totalPages = await array.total_pages;

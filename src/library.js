@@ -1,6 +1,7 @@
 import './sass/main.scss';
 import { fetchMovieById, renderMoviesFirstLoad } from './js/fetchData';
 import { load, save } from './js/utils';
+import { getMovieAndDisplayModal } from './js/modal';
 
 const watchedButton = document.querySelector('[js-btn-watched]');
 const queueButton = document.querySelector('[js-btn-queue]');
@@ -9,17 +10,17 @@ let libraryList = load('watchedList');
 let moviesList = [];
 
 //Test data
-save('watchedList', [
-  { movieId: 556694, type: 'movie' },
-  { movieId: 77169, type: 'tv' },
-  { movieId: 97970, type: 'tv' },
-  { movieId: 747687, type: 'movie' },
-]);
+// save('watchedList', [
+//   { movieId: 556694, type: 'movie' },
+//   { movieId: 77169, type: 'tv' },
+//   { movieId: 97970, type: 'tv' },
+//   { movieId: 747687, type: 'movie' },
+// ]);
 
-save('queueList', [
-  { movieId: 77169, type: 'tv' },
-  { movieId: 747687, type: 'movie' },
-]);
+// save('queueList', [
+//   { movieId: 77169, type: 'tv' },
+//   { movieId: 747687, type: 'movie' },
+// ]);
 
 watchedButton.addEventListener('click', () => {
   queueButton.classList.remove('library__btn--selected');
@@ -50,6 +51,12 @@ const getAllLibraryMovies = async () => {
   }
   moviesList = [...tempObj];
   renderMoviesFirstLoad(moviesList);
+  let liElements = document.querySelectorAll('.movie-card');
+  liElements.forEach(element => {
+    element.addEventListener('click', () => {
+      getMovieAndDisplayModal(element.dataset.id, element.dataset.type);
+    });
+  });
 };
 
 getAllLibraryMovies();
