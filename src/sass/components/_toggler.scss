@@ -53,3 +53,37 @@
 .header__toggle-input:checked+.header__toggle-label+.background {
     background: #242424;
 }
+
+// THEME
+
+body.light-theme {
+    background-color: $white;
+    color: $gray;
+}
+
+body.dark-theme {
+    background-color: $gray;
+    color: $white;
+
+    .footer,
+    .genre,
+    .modal,
+    .movie-card__title,
+    .description__film,
+    .description__text,
+    .popularity__value,
+    .title__value,
+    .genre__value {
+        color: $white;
+    }
+
+    .footer,
+    .genre,
+    .backdrop {
+        background-color: $eerie;
+    }
+
+    .movie-card__title {
+        font-weight: 400;
+    }
+}
