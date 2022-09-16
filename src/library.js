@@ -50,7 +50,7 @@ const getAllLibraryMovies = async () => {
     tempObj.push(response);
   }
   moviesList = [...tempObj];
-  renderMoviesFirstLoad(moviesList);
+  await renderMoviesFirstLoad(moviesList);
   let liElements = document.querySelectorAll('.movie-card');
   liElements.forEach(element => {
     element.addEventListener('click', () => {
