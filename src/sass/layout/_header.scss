@@ -236,22 +236,36 @@
 
 // === GENRE OPTIONS  ===
 
-.header__genre {
+.header__tools {
+  position: relative;
   display: flex;
   align-items: center;
-  position: absolute;
-  left: 27px;
-  top: 170px;
+  margin-top: 25px;;
+  justify-content: space-between;
+}
+
+.header__toggle-library {
+  position: relative;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.header__genre {
 
   & > select {
     width: 117px;
     font-size: 12px;
     border-radius: 8px;
     height: 35px;
+    cursor: pointer;
   }
 }
 
-.genres {
+.select-items {
+  background-color: $orange;
+}
+
+.genre {
   transition: $shift;
 }
 
