@@ -5,6 +5,7 @@ const inputFormGenreChange = document.querySelector('.header__genre-option');
 const galleryOfMovies = document.querySelector('.gallery_movies');
 const genresList = document.querySelector('.genres');
 const paginationButtons = document.querySelector('.pagination_buttons');
+const noPosterImage = require('../images/misc/no_picture.jpg');
 
 // SPIS TREŚCI:
 // Scenariusz 1: FIRST LOAD
@@ -24,21 +25,19 @@ const GENRE_TV_LIST_URL = '/genre/tv/list';
 const TRENDING_DAY_URL = '/trending/movie/day';
 const TRENDING_WEEK_URL = '/trending/movie/week';
 
-let page = 1;
-
 // Scenariusz 1: FIRST LOAD krok 1
 // Pobranie danych do galerii, która wyświetla się po WEJŚCIU na stronę
-const fetchFirstLoadMovies = async () => {
-    const response = await fetch(
-        `${BASE_URL}${MAIN_PAGE_URL}${API_KEY}&page=${page}`
-    );
+const fetchFirstLoadMovies = async page => {
+  const response = await fetch(
+    `${BASE_URL}${MAIN_PAGE_URL}${API_KEY}&page=${page}&include_adult=false`,
+  );
   const firstLoadMovies = await response.json();
   return firstLoadMovies;
 };
 
 // Scenariusz 2: SEARCH MOVIE krok 1
 // Pobranie danych do galerii, która wyświetla się po WPISANIU FILMU
-const fetchInputMovieTitle = async movieTitle => {
+const fetchInputMovieTitle = async (page, movieTitle) => {
   const response = await fetch(
     `${BASE_URL}${SEARCH_MOVIE_URL}${API_KEY}&query=${movieTitle}&page=${page}&include_adult=false`,
   );
@@ -59,19 +58,40 @@ let renderMoviesFirstLoad = async data => {
   const genreName = await getMovieGenresNames();
   galleryOfMovies.innerHTML = '';
   const markup = data
-        .map(({poster_path, title, name, genre_ids, release_date, first_air_date, vote_average, id, media_type, original_title, original_name}) => {
+    .map(
+      ({
+        poster_path,
+        title,
+        name,
+        genre_ids,
+        release_date,
+        first_air_date,
+        vote_average,
+        id,
+        media_type,
+        original_title,
+        original_name,
+      }) => {
         return `
                 <li class="movie-card" data-id="${id}" data-type="${media_type}">
-                    <img class="movie-card__img" src="https://image.tmdb.org/t/p/w500/${poster_path}" alt="poster of "${
-          title === undefined ? name : title
-        }"" loading="lazy" />
-                    <h2 class="movie-card__title">${title === undefined ? name : title}</h2>
+                    <img class="movie-card__img" src="${
+                      poster_path != null
+                        ? `https://image.tmdb.org/t/p/w500/${poster_path}`
+                        : noPosterImage
+                    }" alt="poster of '${title ? title : name}'"  loading="lazy"/>
+                    <h2 class="movie-card__title">${title ? title : name}</h2>
                     <div class="movie-card__info">
                         <p class="movie-card__genre-and-year">
                             <span class="movie-card__genre">${genre_ids
                               .map(id => genreName[id])
                               .join(', ')}</span>
-                            <span class="movie-card__year">${release_date || first_air_date}</span>
+                            <span class="movie-card__year">${
+                              release_date
+                                ? release_date
+                                : first_air_date
+                                ? first_air_date
+                                : 'no-data'
+                            }</span>
                         </p>
                         <p class="movie-card__vote-average">${vote_average.toFixed(2)}</p>
                     </div>
@@ -83,7 +103,6 @@ let renderMoviesFirstLoad = async data => {
   return galleryOfMovies.insertAdjacentHTML('beforeend', markup);
 };
 
-
 // Scenariusz 2: SEARCH MOVIE krok 2
 // Tworzenie galerii po WPISANIU FILMU w input
 let renderMoviesInputTitle = async data => {
@@ -93,103 +112,98 @@ let renderMoviesInputTitle = async data => {
     .map(
       ({
         poster_path,
-        original_title,
         title,
+        name,
         genre_ids,
         release_date,
+        first_air_date,
         vote_average,
-        name,
-        original_name,
         id,
+        media_type,
+        original_title,
+        original_name,
       }) => {
         return `
                 <li class="movie-card" data-id="${id}" data-type="movie">
-                    <img class="movie-card__img" src="https://image.tmdb.org/t/p/w500/${poster_path}" alt="${
-          title === undefined ? name : title
-        }" loading="lazy" />
-                    <h2 class="movie-card__title">${title === undefined ? name : title}</h2>
+                    <img class="movie-card__img" src="${
+                      poster_path != null
+                        ? `https://image.tmdb.org/t/p/w500/${poster_path}`
+                        : noPosterImage
+                    }" alt="${title ? title : name}" loading="lazy" />
+                    <h2 class="movie-card__title">${title ? title : name}</h2>
                     <div class="movie-card__info">
                         <p class="movie-card__genre-and-year">
-                            <span class="movie-card__genre">${genre_ids.map(id => genreName[id]).join(', ')}</span>
-                            <span class="movie-card__year">${release_date || first_air_date}</span>
+                            <span class="movie-card__genre">${genre_ids
+                              .map(id => genreName[id])
+                              .join(', ')}</span>
+                            <span class="movie-card__year">${
+                              release_date
+                                ? release_date
+                                : first_air_date
+                                ? first_air_date
+                                : 'no-data'
+                            }</span>
                         </p>
                         <p class="movie-card__vote-average">${vote_average.toFixed(2)}</p>
                     </div>
                 </li>
-            `},
+            `;
+      },
     )
     .join('');
   return galleryOfMovies.insertAdjacentHTML('beforeend', markup);
 };
-
 
 //-----------------------------------------------------------------//
 // ZNALEZIENIE LISTY WSZYSTKICH GATUNKÓW FILMÓW
 // z obu podzbiorów bazy danych: Movie oraz TV
 
 const getAllGenres = async () => {
-    const responseGenresMovie = await fetch(
-        `${BASE_URL}${GENRE_MOVIE_LIST_URL}${API_KEY}&language=en-US`
-    );
-    const responseGenresTV = await fetch(
-        `${BASE_URL}${GENRE_TV_LIST_URL}${API_KEY}&language=en-US`
-    );
-  
-    const genresMovieList = await responseGenresMovie.json();
-    const genresTVList = await responseGenresTV.json();
-  
-    const allGenresList = [
-        ...new Map(
-            [...genresMovieList.genres, ...genresTVList.genres].map(genre => [
-                genre['id'], genre,
-            ])
-        ).values(),
-    ];
+  const responseGenresMovie = await fetch(
+    `${BASE_URL}${GENRE_MOVIE_LIST_URL}${API_KEY}&language=en-US`,
+  );
+  const responseGenresTV = await fetch(`${BASE_URL}${GENRE_TV_LIST_URL}${API_KEY}&language=en-US`);
+
+  const genresMovieList = await responseGenresMovie.json();
+  const genresTVList = await responseGenresTV.json();
+
+  const allGenresList = [
+    ...new Map(
+      [...genresMovieList.genres, ...genresTVList.genres].map(genre => [genre['id'], genre]),
+    ).values(),
+  ];
   allGenresListMain = allGenresList;
-    return allGenresList;
+  return allGenresList;
 };
 let genreResponse;
 
 let allGenresListMain;
 console.log(allGenresListMain);
 
-
-
 const getMovieGenresNames = async () => {
-    if (!genreResponse) {
-        genreResponse = await getAllGenres();
-    }
-    return genreResponse.reduce((allGenres, genre) => {
-        return {...allGenres, [genre.id]: genre.name,
-        };
-    }, {});
+  if (!genreResponse) {
+    genreResponse = await getAllGenres();
+  }
+  return genreResponse.reduce((allGenres, genre) => {
+    return { ...allGenres, [genre.id]: genre.name };
+  }, {});
 };
 
-
-
-
-
-
-
 let printAllGenresList = () => {
-    genresList.innerHTML = '';
-    const markup = allGenresList
-        .map(genre => {
-            return `
+  genresList.innerHTML = '';
+  const markup = allGenresList
+    .map(genre => {
+      return `
                 <div>
                     <ul>
                         <li class="genres">${genre}</li>
                     </ul>
                 </div>
-            `})
-        .join("");
-    return genresList.insertAdjacentHTML('beforeend', markup);
+            `;
+    })
+    .join('');
+  return genresList.insertAdjacentHTML('beforeend', markup);
 };
-
-
-
-
-
 
 /*
 
@@ -232,28 +246,18 @@ function parsGenres(genresId, genresList) {
 
 */
 
-
-
-
-
-
-
-
-
 //-----------------------------------------------------------------//
 // PAGINACJA
 const pagination = async (totalPages, title) => {
-  paginationButtons = '';
-  if (totalPages >= 1) {
-    for (let i = 1; i <= totalPages; i++) {
-      let pageButton = document.createElement('button');
-      pageButton.innerHTML = i;
-      paginationButtons.appendChild(pageButton);
-    }
-  }
+  // paginationButtons = '';
+  // if (totalPages >= 1) {
+  //   for (let i = 1; i <= totalPages; i++) {
+  //     let pageButton = document.createElement('button');
+  //     pageButton.innerHTML = i;
+  //     paginationButtons.appendChild(pageButton);
+  //   }
+  // }
 };
-
-
 
 export {
   inputFormButton,
@@ -267,4 +271,5 @@ export {
   renderMoviesFirstLoad,
   renderMoviesInputTitle,
   pagination,
+  noPosterImage,
 };

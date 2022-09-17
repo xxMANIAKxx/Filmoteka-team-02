@@ -1,7 +1,7 @@
 import './sass/main.scss';
-import { fetchMovieById, renderMoviesFirstLoad } from './js/fetchData';
-import { load, save } from './js/utils';
-import { getMovieAndDisplayModal } from './js/modal';
+import { fetchMovieById, renderMoviesFirstLoad, galleryOfMovies } from './js/fetchData';
+import { load } from './js/utils';
+import { addModalListenerFunction } from './js/modal';
 
 const watchedButton = document.querySelector('[js-btn-watched]');
 const queueButton = document.querySelector('[js-btn-queue]');
@@ -38,25 +38,23 @@ queueButton.addEventListener('click', () => {
 });
 
 const getAllLibraryMovies = async () => {
+  galleryOfMovies.innerHTML = '';
   const tempObj = [];
 
-  for (const movie of libraryList) {
-    let response = await fetchMovieById(movie.movieId, movie.type).then(res => res);
-    response = {
-      ...response,
-      genre_ids: [...response.genres.map(genre => genre.id)],
-      media_type: movie.type,
-    };
-    tempObj.push(response);
+  if (libraryList != undefined) {
+    for (const movie of libraryList) {
+      let response = await fetchMovieById(movie.movieId, movie.type).then(res => res);
+      response = {
+        ...response,
+        genre_ids: [...response.genres.map(genre => genre.id)],
+        media_type: movie.type,
+      };
+      tempObj.push(response);
+    }
+    moviesList = [...tempObj];
+    await renderMoviesFirstLoad(moviesList);
+    addModalListenerFunction();
   }
-  moviesList = [...tempObj];
-  await renderMoviesFirstLoad(moviesList);
-  let liElements = document.querySelectorAll('.movie-card');
-  liElements.forEach(element => {
-    element.addEventListener('click', () => {
-      getMovieAndDisplayModal(element.dataset.id, element.dataset.type);
-    });
-  });
 };
 
 getAllLibraryMovies();
