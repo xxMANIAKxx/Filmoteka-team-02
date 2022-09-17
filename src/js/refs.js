@@ -4,4 +4,5 @@ export const refs = {
     body: document.querySelector('body'),
     input: document.querySelector('#darkmode-toggle'),
 
+    genreSelect: document.querySelector('.genre'),
 };
