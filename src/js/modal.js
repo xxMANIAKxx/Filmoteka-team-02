@@ -1,4 +1,4 @@
-import { fetchMovieById } from './fetchData';
+import { fetchMovieById, noPosterImage } from './fetchData';
 import { addToLibrary, load } from './utils';
 const modalElement = document.querySelector('[data-modal]');
 
@@ -13,16 +13,25 @@ document.addEventListener('keydown', e => {
   }
 });
 
+const addModalListenerFunction = () => {
+  let liElements = document.querySelectorAll('.movie-card');
+  liElements.forEach(element => {
+    element.addEventListener('click', () => {
+      getMovieAndDisplayModal(element.dataset.id, element.dataset.type);
+    });
+  });
+}
+
 const getMovieAndDisplayModal = async (id, type) => {
   const movieDetails = await fetchMovieById(id, type);
   let onWatched = false;
   let onQueue = false;
-  load('watchedList').forEach(movie => {
+  load('watchedList')?.forEach(movie => {
     if (movie.movieId == id && movie.type === type) {
       onWatched = true;
     }
   });
-  load('queueList').forEach(movie => {
+  load('queueList')?.forEach(movie => {
     if (movie.movieId == id && movie.type === type) {
       onQueue = true;
     }
@@ -34,18 +43,18 @@ const getMovieAndDisplayModal = async (id, type) => {
             <li class="pic">
                 <picture>
                     <source
-                        src="https://image.tmdb.org/t/p/w300/${movieDetails.poster_path}"
-                        srcset="https://image.tmdb.org/t/p/w300/${movieDetails.poster_path} 2x"
+                        src="${movieDetails.poster_path? `https://image.tmdb.org/t/p/w300/${movieDetails.poster_path}`: noPosterImage}"
+                        srcset="${movieDetails.poster_path? `https://image.tmdb.org/t/p/w300/${movieDetails.poster_path}`: noPosterImage} 2x"
                         media="(min-width:320px) and (max-width:767px)"/>
                     <source
-                        src="https://image.tmdb.org/t/p/w500/${movieDetails.poster_path}"
-                        srcset="https://image.tmdb.org/t/p/w500/${movieDetails.poster_path} 2x"
+                        src="${movieDetails.poster_path? `https://image.tmdb.org/t/p/w500/${movieDetails.poster_path}`: noPosterImage}"
+                        srcset="${movieDetails.poster_path? `https://image.tmdb.org/t/p/w500/${movieDetails.poster_path}`: noPosterImage} 2x"
                         media="(min-width:768px) and (max-width:1023px)"/>
                     <source
-                        src="https://image.tmdb.org/t/p/w500/${movieDetails.poster_path}"
-                        srcset="https://image.tmdb.org/t/p/w500/${movieDetails.poster_path} 2x"
+                        src="${movieDetails.poster_path? `https://image.tmdb.org/t/p/w500/${movieDetails.poster_path}`: noPosterImage}"
+                        srcset="${movieDetails.poster_path? `https://image.tmdb.org/t/p/w500/${movieDetails.poster_path}`: noPosterImage} 2x"
                         media="(min-width:1024px)"/>
-                    <img src="https://image.tmdb.org/t/p/w500/${movieDetails.poster_path}" 
+                    <img src="${movieDetails.poster_path? `https://image.tmdb.org/t/p/w500/${movieDetails.poster_path}`: noPosterImage}" 
                         alt="A FISTFUL OF LEAD"
                     />
                 </picture>
@@ -120,4 +129,4 @@ const getMovieAndDisplayModal = async (id, type) => {
   });
 };
 
-export { getMovieAndDisplayModal };
+export { getMovieAndDisplayModal, addModalListenerFunction };
