@@ -80,6 +80,7 @@ let renderMoviesFirstLoad = async data => {
                         : noPosterImage
                     }" alt="poster of '${title ? title : name}'"  loading="lazy"/>
                     <h2 class="movie-card__title">${title ? title : name}</h2>
+
                     <div class="movie-card__info">
                         <p class="movie-card__genre-and-year">
                             <span class="movie-card__genre">${genre_ids
@@ -131,6 +132,7 @@ let renderMoviesInputTitle = async data => {
                         : noPosterImage
                     }" alt="${title ? title : name}" loading="lazy" />
                     <h2 class="movie-card__title">${title ? title : name}</h2>
+
                     <div class="movie-card__info">
                         <p class="movie-card__genre-and-year">
                             <span class="movie-card__genre">${genre_ids

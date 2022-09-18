@@ -20,7 +20,7 @@
             <a class="navigation__link link" href="index.html">home</a>
           </li>
           <li class="navigation__item list">
-            <a class="navigation__link link" href="library.html">login</a>
+            <a class="navigation__link link" id="library-btn" href="library.html">my library</a>
           </li>
         </ul>
       </nav>
@@ -47,35 +47,37 @@
     </div>
 
     <!-- GENRE -->
-    <div class="header__genre">
-      <select class="genre">
-        <option class="header__genre-option" value="">Choose genre</option>
-        <option value="Action">Action</option>
-        <option value="Adventure">Adventure</option>
-        <option value="Animation">Animation</option>
-        <option value="Comedy">Comedy</option>
-        <option value="Crime">Crime</option>
-        <option value="Documentary">Documentary</option>
-        <option value="Drama">Drama</option>
-        <option value="Family">Family</option>
-        <option value="Fantasy">Fantasy</option>
-        <option value="History">History</option>
-        <option value="Horror">Horror</option>
-        <option value="Music">Music</option>
-        <option value="Mystery">Mystery</option>
-        <option value="Romance">Romance</option>
-        <option value="Science Fiction">Science Fiction</option>
-        <option value="TV Movie">TV Movie</option>
-        <option value="Thriller">Thriller</option>
-        <option value="War">War</option>
-        <option value="Western">Western</option>
-      </select>
-    </div>
+    <div class="header__tools">
+      <div class="header__genre">
+        <select class="genre">
+          <option class="header__genre-option" value="">Choose genre</option>
+          <option class="genre-choice" value="Action">Action</option>
+          <option class="genre-choice" value="Adventure">Adventure</option>
+          <option class="genre-choice" value="Animation">Animation</option>
+          <option class="genre-choice" value="Comedy">Comedy</option>
+          <option class="genre-choice" value="Crime">Crime</option>
+          <option class="genre-choice" value="Documentary">Documentary</option>
+          <option class="genre-choice" value="Drama">Drama</option>
+          <option class="genre-choice" value="Family">Family</option>
+          <option class="genre-choice" value="Fantasy">Fantasy</option>
+          <option class="genre-choice" value="History">History</option>
+          <option class="genre-choice" value="Horror">Horror</option>
+          <option class="genre-choice" value="Music">Music</option>
+          <option class="genre-choice" value="Mystery">Mystery</option>
+          <option class="genre-choice" value="Romance">Romance</option>
+          <option class="genre-choice" value="Science Fiction">Science Fiction</option>
+          <option class="genre-choice" value="TV Movie">TV Movie</option>
+          <option class="genre-choice" value="Thriller">Thriller</option>
+          <option class="genre-choice" value="War">War</option>
+          <option class="genre-choice" value="Western">Western</option>
+        </select>
+      </div>
 
-    <!-- LIGHT/DARK MODE TOGGLER -->
-    <div class="header__toggle">
-      <input class="header__toggle-input" type="checkbox" name="theme" id="darkmode-toggle" />
-      <label class="header__toggle-label" for="darkmode-toggle"> </label>
+      <!-- LIGHT/DARK MODE TOGGLER -->
+      <div class="header__toggle">
+        <input class="header__toggle-input" type="checkbox" name="theme" id="darkmode-toggle" />
+        <label class="header__toggle-label" for="darkmode-toggle"> </label>
+      </div>
     </div>
   </div>
 </header>
