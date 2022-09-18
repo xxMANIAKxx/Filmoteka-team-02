@@ -80,18 +80,19 @@ let renderMoviesFirstLoad = async data => {
                         : noPosterImage
                     }" alt="poster of '${title ? title : name}'"  loading="lazy"/>
                     <h2 class="movie-card__title">${title ? title : name}</h2>
-
                     <div class="movie-card__info">
                         <p class="movie-card__genre-and-year">
                             <span class="movie-card__genre">${genre_ids
                               .map(id => genreName[id])
+                              .splice(0,2)
                               .join(', ')}</span>
-                            <span class="movie-card__year">${
+                            <span class="movie-card__year">| ${(
                               release_date
                                 ? release_date
                                 : first_air_date
                                 ? first_air_date
-                                : 'no-data'
+                                : 'no-data')
+                                .slice(0,4)
                             }</span>
                         </p>
                         <p class="movie-card__vote-average">${vote_average.toFixed(2)}</p>
@@ -137,13 +138,15 @@ let renderMoviesInputTitle = async data => {
                         <p class="movie-card__genre-and-year">
                             <span class="movie-card__genre">${genre_ids
                               .map(id => genreName[id])
+                              .splice(0,2)
                               .join(', ')}</span>
-                            <span class="movie-card__year">${
+                            <span class="movie-card__year">${(
                               release_date
                                 ? release_date
                                 : first_air_date
                                 ? first_air_date
-                                : 'no-data'
+                                : 'no-data')
+                                .slice(0,4)
                             }</span>
                         </p>
                         <p class="movie-card__vote-average">${vote_average.toFixed(2)}</p>
@@ -161,9 +164,7 @@ let renderMoviesInputTitle = async data => {
 // z obu podzbiorów bazy danych: Movie oraz TV
 
 const getAllGenres = async () => {
-  const responseGenresMovie = await fetch(
-    `${BASE_URL}${GENRE_MOVIE_LIST_URL}${API_KEY}&language=en-US`,
-  );
+  const responseGenresMovie = await fetch(`${BASE_URL}${GENRE_MOVIE_LIST_URL}${API_KEY}&language=en-US`);
   const responseGenresTV = await fetch(`${BASE_URL}${GENRE_TV_LIST_URL}${API_KEY}&language=en-US`);
 
   const genresMovieList = await responseGenresMovie.json();
@@ -182,6 +183,9 @@ let genreResponse;
 let allGenresListMain;
 console.log(allGenresListMain);
 
+
+// ZNALEZIENIE NAZW GATUNKÓW FILMÓW Z ICH NUMERÓW ID
+
 const getMovieGenresNames = async () => {
   if (!genreResponse) {
     genreResponse = await getAllGenres();
@@ -193,7 +197,7 @@ const getMovieGenresNames = async () => {
 
 let printAllGenresList = () => {
   genresList.innerHTML = '';
-  const markup = allGenresList
+  const markup = allGenresListMenu
     .map(genre => {
       return `
                 <div>
@@ -206,6 +210,8 @@ let printAllGenresList = () => {
     .join('');
   return genresList.insertAdjacentHTML('beforeend', markup);
 };
+
+printAllGenresList;
 
 /*
 
@@ -249,16 +255,10 @@ function parsGenres(genresId, genresList) {
 */
 
 //-----------------------------------------------------------------//
+
+
 // PAGINACJA
 const pagination = async (totalPages, title) => {
-  // paginationButtons = '';
-  // if (totalPages >= 1) {
-  //   for (let i = 1; i <= totalPages; i++) {
-  //     let pageButton = document.createElement('button');
-  //     pageButton.innerHTML = i;
-  //     paginationButtons.appendChild(pageButton);
-  //   }
-  // }
 };
 
 export {

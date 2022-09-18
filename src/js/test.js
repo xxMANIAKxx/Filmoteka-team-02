@@ -103,7 +103,7 @@ export default class FilmsApiService {
     }
     
 
-    // Metoda pobierania filmów/filmów według gatunku żądania (za pomocą metody Setter).
+    // Metoda pobierania filmu/filmów według gatunku żądania (za pomocą metody Setter).
     async onFetchGenresFilms() {
         const searchParams = new URLSearchParams({
             with_genres: this.with_genres,
