@@ -1,8 +1,20 @@
 import genresData from './genres.json';
 import { refs } from './refs.js';
+import {
+  fetchFirstLoadMovies,
+  fetchInputMovieTitle,
+  renderMoviesFirstLoad,
+  renderMoviesInputTitle,
+} from './fetchData';
 
-refs.genreSelect.addEventListener('change', genreFilter);
+// const select = refs.genreSelect;
 
-// async const genreFilter = () => {
-//     try 
+// select.addEventListener('change', genreFilter);
+
+// async function genreFilter() {
+//   try {
+
+//   } catch (error) {
+//     console.log(error);
+//   }
 // }

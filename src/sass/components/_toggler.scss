@@ -79,4 +79,16 @@ body.dark-theme {
     .movie-card__title {
         font-weight: 400;
     }
+
+    .modal__close-btn {
+        fill: $gray55;
+        background-color: $eerie;
+        border-color: $gray55;
+
+        &:hover,
+        &:focus {
+            fill: $orange;
+            border-color: $orange;
+        }
+    }
 }

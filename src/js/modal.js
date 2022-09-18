@@ -65,11 +65,11 @@ const getMovieAndDisplayModal = async (id, type) => {
                 <li class="description__film">${
                   movieDetails.title === undefined ? movieDetails.name : movieDetails.title
                 }</li>
-                <button type="button" class="close-btn" data-modal-close>x
-                    <svg width="14" height="14">
-                        <use href="../src/images/svg/symbol-defs.svg#icon-close"></use>
-                    </svg>
-                </button>
+                    <button type="button" class="modal__close-btn" data-modal-close>
+                        <svg class="modal__close-icon" data-modal-close width="18" height="18">
+                            <use href="../images/svg/modal-close-btn.svg#close-btn"></use>
+                        </svg>
+                    </button>
                     <ul class="description__vote">
                         <li class="vote__text">Vote / Votes</li>
                         <li class="vote__value"><span class="vote__mark">${movieDetails.vote_average.toFixed(
