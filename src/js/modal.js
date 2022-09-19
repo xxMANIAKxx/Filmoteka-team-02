@@ -39,37 +39,38 @@ const getMovieAndDisplayModal = async (id, type) => {
   modalElement.classList.remove('is-hidden');
 
   let modalHTML = `
-        <ul class="modal__pic">
-            <li class="pic">
-                <picture>
-                    <source
-                        src="${movieDetails.poster_path? `https://image.tmdb.org/t/p/w300/${movieDetails.poster_path}`: noPosterImage}"
-                        srcset="${movieDetails.poster_path? `https://image.tmdb.org/t/p/w300/${movieDetails.poster_path}`: noPosterImage} 2x"
-                        media="(min-width:320px) and (max-width:767px)"/>
-                    <source
-                        src="${movieDetails.poster_path? `https://image.tmdb.org/t/p/w500/${movieDetails.poster_path}`: noPosterImage}"
-                        srcset="${movieDetails.poster_path? `https://image.tmdb.org/t/p/w500/${movieDetails.poster_path}`: noPosterImage} 2x"
-                        media="(min-width:768px) and (max-width:1023px)"/>
-                    <source
-                        src="${movieDetails.poster_path? `https://image.tmdb.org/t/p/w500/${movieDetails.poster_path}`: noPosterImage}"
-                        srcset="${movieDetails.poster_path? `https://image.tmdb.org/t/p/w500/${movieDetails.poster_path}`: noPosterImage} 2x"
-                        media="(min-width:1024px)"/>
-                    <img src="${movieDetails.poster_path? `https://image.tmdb.org/t/p/w500/${movieDetails.poster_path}`: noPosterImage}" 
-                        alt="A FISTFUL OF LEAD"
-                    />
-                </picture>
-            </li>
+      <ul class="modal__pic">
+          <li class="pic">
+              <picture>
+                  <source
+                      src="${movieDetails.poster_path? `https://image.tmdb.org/t/p/w300/${movieDetails.poster_path}`: noPosterImage}"
+                      srcset="${movieDetails.poster_path? `https://image.tmdb.org/t/p/w300/${movieDetails.poster_path}`: noPosterImage} 2x"
+                      media="(min-width:320px) and (max-width:767px)"/>
+                  <source
+                      src="${movieDetails.poster_path? `https://image.tmdb.org/t/p/w500/${movieDetails.poster_path}`: noPosterImage}"
+                      srcset="${movieDetails.poster_path? `https://image.tmdb.org/t/p/w500/${movieDetails.poster_path}`: noPosterImage} 2x"
+                      media="(min-width:768px) and (max-width:1023px)"/>
+                  <source
+                      src="${movieDetails.poster_path? `https://image.tmdb.org/t/p/w500/${movieDetails.poster_path}`: noPosterImage}"
+                      srcset="${movieDetails.poster_path? `https://image.tmdb.org/t/p/w500/${movieDetails.poster_path}`: noPosterImage} 2x"
+                      media="(min-width:1024px)"/>
+                  <img src="${movieDetails.poster_path? `https://image.tmdb.org/t/p/w500/${movieDetails.poster_path}`: noPosterImage}" 
+                      alt="A FISTFUL OF LEAD"
+                  />
+              </picture>
+          </li>
+
+          <button class="modal__close-btn" type="button" data-modal-close>
+              <svg class="modal__close-icon" width="18" height="18">
+                  <use href="../images/svg/modal-close-btn.svg#close-btn"></use>
+              </svg>
+          </button>
         
         <ul class="modal__description">
             <ul class="description__list">
                 <li class="description__film">${
                   movieDetails.title === undefined ? movieDetails.name : movieDetails.title
                 }</li>
-                <button type="button" class="close-btn" data-modal-close>x
-                    <svg width="14" height="14">
-                        <use href="../src/images/svg/symbol-defs.svg#icon-close"></use>
-                    </svg>
-                </button>
                     <ul class="description__vote">
                         <li class="vote__text">Vote / Votes</li>
                         <li class="vote__value"><span class="vote__mark">${movieDetails.vote_average.toFixed(
