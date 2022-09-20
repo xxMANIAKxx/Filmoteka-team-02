@@ -1,3 +1,7 @@
+html {
+  scroll-behavior: smooth;
+}
+
 .go-top {
   display: flex;
   justify-content: right;
@@ -6,9 +10,12 @@
 
 .go-top-button:hover {
   cursor: pointer;
-  background-color: #e0e0e0;
+  background-color: white;
   color: #cc5200;
   border-color: #cc5200;
+  -webkit-box-shadow: 0px 0px 28px 0px rgba(255, 107, 8, 1);
+  -moz-box-shadow: 0px 0px 28px 0px rgba(255, 107, 8, 1);
+  box-shadow: 0px 0px 28px 0px rgba(255, 107, 8, 1);
 }
 
 .go-top-button {
