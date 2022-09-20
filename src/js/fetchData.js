@@ -20,6 +20,7 @@ const API_KEY = '?api_key=fd87aef18dfd3a2446d882cb85b7272d';
 const BASE_URL = 'https://api.themoviedb.org/3';
 const MAIN_PAGE_URL = '/trending/all/day';
 const SEARCH_MOVIE_URL = '/search/movie';
+const DISCOVER_MOVIE_URL = '/discover/movie';
 const GENRE_MOVIE_LIST_URL = '/genre/movie/list';
 const GENRE_TV_LIST_URL = '/genre/tv/list';
 const TRENDING_DAY_URL = '/trending/movie/day';
@@ -52,6 +53,15 @@ const fetchMovieById = async (movieId, type = 'movie') => {
   return responseObject;
 };
 
+// Pobranie filmów dla gatunku.
+const fetchMoviesByGenre = async (page, genre) => {
+  const response = await fetch(
+    `${BASE_URL}${DISCOVER_MOVIE_URL}${API_KEY}&page=${page}&include_adult=false&with_genres=${genre}`,
+  );
+  const responseObject = await response.json();
+  return responseObject;
+};
+
 // Scenariusz 1: FIRST LOAD krok 2
 // Tworzenie galerii filmów po WEJŚCIU na stronę (lub przeładowaniu)
 let renderMoviesFirstLoad = async data => {
@@ -80,19 +90,18 @@ let renderMoviesFirstLoad = async data => {
                         : noPosterImage
                     }" alt="poster of '${title ? title : name}'"  loading="lazy"/>
                     <h2 class="movie-card__title">${title ? title : name}</h2>
-
                     <div class="movie-card__info">
                         <p class="movie-card__genre-and-year">
                             <span class="movie-card__genre">${genre_ids
                               .map(id => genreName[id])
+                              .splice(0, 2)
                               .join(', ')}</span>
-                            <span class="movie-card__year">${
-                              release_date
-                                ? release_date
-                                : first_air_date
-                                ? first_air_date
-                                : 'no-data'
-                            }</span>
+                            <span class="movie-card__year">| ${(release_date
+                              ? release_date
+                              : first_air_date
+                              ? first_air_date
+                              : 'no-data'
+                            ).slice(0, 4)}</span>
                         </p>
                         <p class="movie-card__vote-average">${vote_average.toFixed(2)}</p>
                     </div>
@@ -137,14 +146,14 @@ let renderMoviesInputTitle = async data => {
                         <p class="movie-card__genre-and-year">
                             <span class="movie-card__genre">${genre_ids
                               .map(id => genreName[id])
+                              .splice(0, 2)
                               .join(', ')}</span>
-                            <span class="movie-card__year">${
-                              release_date
-                                ? release_date
-                                : first_air_date
-                                ? first_air_date
-                                : 'no-data'
-                            }</span>
+                            <span class="movie-card__year">${(release_date
+                              ? release_date
+                              : first_air_date
+                              ? first_air_date
+                              : 'no-data'
+                            ).slice(0, 4)}</span>
                         </p>
                         <p class="movie-card__vote-average">${vote_average.toFixed(2)}</p>
                     </div>
@@ -182,6 +191,8 @@ let genreResponse;
 let allGenresListMain;
 console.log(allGenresListMain);
 
+// ZNALEZIENIE NAZW GATUNKÓW FILMÓW Z ICH NUMERÓW ID
+
 const getMovieGenresNames = async () => {
   if (!genreResponse) {
     genreResponse = await getAllGenres();
@@ -193,7 +204,7 @@ const getMovieGenresNames = async () => {
 
 let printAllGenresList = () => {
   genresList.innerHTML = '';
-  const markup = allGenresList
+  const markup = allGenresListMenu
     .map(genre => {
       return `
                 <div>
@@ -206,6 +217,8 @@ let printAllGenresList = () => {
     .join('');
   return genresList.insertAdjacentHTML('beforeend', markup);
 };
+
+printAllGenresList;
 
 /*
 
@@ -249,17 +262,9 @@ function parsGenres(genresId, genresList) {
 */
 
 //-----------------------------------------------------------------//
+
 // PAGINACJA
-const pagination = async (totalPages, title) => {
-  // paginationButtons = '';
-  // if (totalPages >= 1) {
-  //   for (let i = 1; i <= totalPages; i++) {
-  //     let pageButton = document.createElement('button');
-  //     pageButton.innerHTML = i;
-  //     paginationButtons.appendChild(pageButton);
-  //   }
-  // }
-};
+const pagination = async (totalPages, title) => {};
 
 export {
   inputFormButton,
@@ -270,6 +275,7 @@ export {
   fetchFirstLoadMovies,
   fetchInputMovieTitle,
   fetchMovieById,
+  fetchMoviesByGenre,
   renderMoviesFirstLoad,
   renderMoviesInputTitle,
   pagination,

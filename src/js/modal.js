@@ -1,5 +1,5 @@
 import { fetchMovieById, noPosterImage } from './fetchData';
-import { addToLibrary, load } from './utils';
+import { addToLibrary, load, removeFromLibrary } from './utils';
 const modalElement = document.querySelector('[data-modal]');
 
 document.addEventListener('click', event => {
@@ -20,7 +20,7 @@ const addModalListenerFunction = () => {
       getMovieAndDisplayModal(element.dataset.id, element.dataset.type);
     });
   });
-}
+};
 
 const getMovieAndDisplayModal = async (id, type) => {
   const movieDetails = await fetchMovieById(id, type);
@@ -39,37 +39,66 @@ const getMovieAndDisplayModal = async (id, type) => {
   modalElement.classList.remove('is-hidden');
 
   let modalHTML = `
-        <ul class="modal__pic">
-            <li class="pic">
-                <picture>
-                    <source
-                        src="${movieDetails.poster_path? `https://image.tmdb.org/t/p/w300/${movieDetails.poster_path}`: noPosterImage}"
-                        srcset="${movieDetails.poster_path? `https://image.tmdb.org/t/p/w300/${movieDetails.poster_path}`: noPosterImage} 2x"
-                        media="(min-width:320px) and (max-width:767px)"/>
-                    <source
-                        src="${movieDetails.poster_path? `https://image.tmdb.org/t/p/w500/${movieDetails.poster_path}`: noPosterImage}"
-                        srcset="${movieDetails.poster_path? `https://image.tmdb.org/t/p/w500/${movieDetails.poster_path}`: noPosterImage} 2x"
-                        media="(min-width:768px) and (max-width:1023px)"/>
-                    <source
-                        src="${movieDetails.poster_path? `https://image.tmdb.org/t/p/w500/${movieDetails.poster_path}`: noPosterImage}"
-                        srcset="${movieDetails.poster_path? `https://image.tmdb.org/t/p/w500/${movieDetails.poster_path}`: noPosterImage} 2x"
-                        media="(min-width:1024px)"/>
-                    <img src="${movieDetails.poster_path? `https://image.tmdb.org/t/p/w500/${movieDetails.poster_path}`: noPosterImage}" 
-                        alt="A FISTFUL OF LEAD"
-                    />
-                </picture>
-            </li>
+      <ul class="modal__pic">
+          <li class="pic">
+              <picture>
+                  <source
+                      src="${
+                        movieDetails.poster_path
+                          ? `https://image.tmdb.org/t/p/w300/${movieDetails.poster_path}`
+                          : noPosterImage
+                      }"
+                      srcset="${
+                        movieDetails.poster_path
+                          ? `https://image.tmdb.org/t/p/w300/${movieDetails.poster_path}`
+                          : noPosterImage
+                      } 2x"
+                      media="(min-width:320px) and (max-width:767px)"/>
+                  <source
+                      src="${
+                        movieDetails.poster_path
+                          ? `https://image.tmdb.org/t/p/w500/${movieDetails.poster_path}`
+                          : noPosterImage
+                      }"
+                      srcset="${
+                        movieDetails.poster_path
+                          ? `https://image.tmdb.org/t/p/w500/${movieDetails.poster_path}`
+                          : noPosterImage
+                      } 2x"
+                      media="(min-width:768px) and (max-width:1023px)"/>
+                  <source
+                      src="${
+                        movieDetails.poster_path
+                          ? `https://image.tmdb.org/t/p/w500/${movieDetails.poster_path}`
+                          : noPosterImage
+                      }"
+                      srcset="${
+                        movieDetails.poster_path
+                          ? `https://image.tmdb.org/t/p/w500/${movieDetails.poster_path}`
+                          : noPosterImage
+                      } 2x"
+                      media="(min-width:1024px)"/>
+                  <img src="${
+                    movieDetails.poster_path
+                      ? `https://image.tmdb.org/t/p/w500/${movieDetails.poster_path}`
+                      : noPosterImage
+                  }" 
+                      alt="A FISTFUL OF LEAD"
+                  />
+              </picture>
+          </li>
+
+          <button class="modal__close-btn" type="button">
+              <svg class="modal__close-icon" width="18" height="18" data-modal-close>
+                  <use xlink:href="../images/svg/modal-close-btn.svg#close-btn"></use>
+              </svg>
+          </button>
         
         <ul class="modal__description">
             <ul class="description__list">
                 <li class="description__film">${
                   movieDetails.title === undefined ? movieDetails.name : movieDetails.title
                 }</li>
-                <button type="button" class="close-btn" data-modal-close>x
-                    <svg width="14" height="14">
-                        <use href="../src/images/svg/symbol-defs.svg#icon-close"></use>
-                    </svg>
-                </button>
                     <ul class="description__vote">
                         <li class="vote__text">Vote / Votes</li>
                         <li class="vote__value"><span class="vote__mark">${movieDetails.vote_average.toFixed(
@@ -109,23 +138,39 @@ const getMovieAndDisplayModal = async (id, type) => {
   let queueBtn = document.querySelector('.queue-btn');
 
   if (onWatched) {
-    watchedBtn.disabled = true;
     watchedBtn.innerHTML = 'On List';
   }
   if (onQueue) {
-    queueBtn.disabled = true;
     queueBtn.innerHTML = 'On List';
   }
 
+  const checkIfOnList = (button, listType, listTypeText) => {
+    let watched;
+    if (listTypeText == undefined) return;
+    if (listTypeText === 'watched') {
+      watched = onWatched;
+    } else if (listTypeText === 'queue') {
+      watched = onQueue;
+    }
+    if (watched) {
+      removeFromLibrary(id, type, listType);
+      button.innerHTML = `Add to ${listTypeText}`;
+    } else {
+      addToLibrary(id, type, listType);
+      button.innerHTML = `Added`;
+    }
+    if (listTypeText === 'watched') {
+      onWatched = !onWatched;
+    } else if (listTypeText === 'queue') {
+      onQueue = !onQueue;
+    }
+  };
+
   watchedBtn.addEventListener('click', () => {
-    watchedBtn.disabled = true;
-    addToLibrary(id, type, 'watchedList');
-    watchedBtn.innerHTML = 'Added';
+    checkIfOnList(watchedBtn, 'watchedList', 'watched');
   });
   queueBtn.addEventListener('click', () => {
-    queueBtn.disabled = true;
-    addToLibrary(id, type, 'queueList');
-    queueBtn.innerHTML = 'Added';
+    checkIfOnList(queueBtn, 'queueList', 'queue');
   });
 };
 

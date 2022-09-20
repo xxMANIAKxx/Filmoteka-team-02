@@ -12,13 +12,14 @@
 @import './components/main-header';
 @import './components/icon';
 @import './components/btn';
-@import './components/spinner';
 @import './components/toggler';
-@import './components/spinner.scss';
-@import './components/pagination.scss';
+@import './components/btn-go-top';
+@import './components/spinner';
+@import './components/pagination';
 
 @import './layout/header';
 @import './layout/footer';
 @import './layout/gallery';
 @import './layout/modal';
 @import './layout/backdrop';
+@import './layout/team-modal';
