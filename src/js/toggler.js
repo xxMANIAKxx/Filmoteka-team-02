@@ -9,10 +9,10 @@ loadTheme();
 refs.input.addEventListener('change', changeTheme);
 
 function changeTheme() {
-    refs.body.classList.toggle(Theme.DARK);
-    refs.body.classList.toggle(Theme.LIGHT);
+  refs.body.classList.toggle(Theme.DARK);
+  refs.body.classList.toggle(Theme.LIGHT);
 
-    getCurrentTheme(body.classList);
+  getCurrentTheme(refs.body.classList);
 }
 
 function getCurrentTheme(currentTheme) {

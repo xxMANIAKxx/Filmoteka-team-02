@@ -1,9 +1,10 @@
-import { fetchMovieById, noPosterImage } from './fetchData';
+import { fetchMovieById, galleryOfMovies, noPosterImage } from './fetchData';
+import { getAllLibraryMovies } from './libraryHelper';
 import { addToLibrary, load, removeFromLibrary } from './utils';
 const modalElement = document.querySelector('[data-modal]');
 
 document.addEventListener('click', event => {
-  if (event.target.matches('[data-modal-close]') || !event.target.closest('[data-modal]')) {
+  if (event.target.matches('[data-modal-close]') || !event.target.closest('.modal')) {
     modalElement.classList.add('is-hidden');
   }
 });
@@ -24,6 +25,7 @@ const addModalListenerFunction = () => {
 
 const getMovieAndDisplayModal = async (id, type) => {
   const movieDetails = await fetchMovieById(id, type);
+  console.log(movieDetails);
   let onWatched = false;
   let onQueue = false;
   load('watchedList')?.forEach(movie => {
@@ -170,9 +172,23 @@ const getMovieAndDisplayModal = async (id, type) => {
 
   watchedBtn.addEventListener('click', () => {
     checkIfOnList(watchedBtn, 'watchedList', 'watched');
+    if (
+      document.location.href.includes('library') &&
+      galleryOfMovies.dataset.listtype === 'watched'
+    ) {
+      let tempLibraryList = load('watchedList');
+      getAllLibraryMovies(tempLibraryList, 'watchedList');
+    }
   });
   queueBtn.addEventListener('click', () => {
     checkIfOnList(queueBtn, 'queueList', 'queue');
+    if (
+      document.location.href.includes('library') &&
+      galleryOfMovies.dataset.listtype === 'queue'
+    ) {
+      let tempLibraryList = load('queueList');
+      getAllLibraryMovies(tempLibraryList, 'queueList');
+    }
   });
 };
 

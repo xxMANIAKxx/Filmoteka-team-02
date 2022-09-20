@@ -1,27 +1,44 @@
-import { fetchMoviesByGenre, renderMoviesFirstLoad } from './fetchData';
+import {
+  fetchFirstLoadMovies,
+  fetchMoviesByGenre,
+  renderMoviesFirstLoad,
+  renderMoviesInputTitle,
+} from './fetchData';
 import genresData from './genres.json';
 import { addModalListenerFunction } from './modal';
 import { createPagination } from './pagination';
 
-const genreSelect = document.querySelector('select.genre');
-genreSelect.addEventListener('change', () => {
+const handleGenreListClick = selectDivText => {
+  document.querySelector('.search-form__input').value = '';
   let selectedGenreId;
+  let selectedGenreIdNotFound = false;
   genresData.forEach(genre => {
-    if (genre.name === genreSelect.value) {
+    if (genre.name === selectDivText) {
       selectedGenreId = genre.id;
     }
   });
-  getAllMoviesByGenre(selectedGenreId, 1);
-});
+  if (selectedGenreId == undefined) selectedGenreIdNotFound = true;
+  getAllMoviesByGenre(selectedGenreId, 1, selectedGenreIdNotFound);
+};
 
-const getAllMoviesByGenre = async (genre, page) => {
+const getAllMoviesByGenre = async (genre, page, idNotFound) => {
   try {
-    const data = await fetchMoviesByGenre(page, genre);
-    await renderMoviesFirstLoad(data.results);
-    addModalListenerFunction();
-    console.log(data);
-    createPagination(data, '', genre);
+    if (idNotFound) {
+      const array = await fetchFirstLoadMovies(1);
+      await renderMoviesFirstLoad(array.results);
+      addModalListenerFunction();
+      console.log(array);
+      createPagination(array);
+    } else {
+      const data = await fetchMoviesByGenre(page, genre);
+      await renderMoviesInputTitle(data.results);
+      addModalListenerFunction();
+      console.log(data);
+      createPagination(data, '', genre);
+    }
   } catch (error) {
     console.error(error);
   }
 };
+
+export { handleGenreListClick };
