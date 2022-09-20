@@ -51,4 +51,16 @@ const addToLibrary = (movieId, type, listType = 'watchedList') => {
   return save(listType, libraryList);
 };
 
-export { save, load, remove, addToLibrary };
+const removeFromLibrary = (movieId, type, listType = 'watchedList') => {
+  let libraryList = load(listType);
+
+  libraryList = libraryList.filter(movie => {
+    if (movie.movieId != movieId && movie.type != type) {
+      return movie;
+    }
+  });
+
+  return save(listType, libraryList);
+};
+
+export { save, load, remove, addToLibrary, removeFromLibrary };

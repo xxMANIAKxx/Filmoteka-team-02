@@ -20,6 +20,7 @@ const API_KEY = '?api_key=fd87aef18dfd3a2446d882cb85b7272d';
 const BASE_URL = 'https://api.themoviedb.org/3';
 const MAIN_PAGE_URL = '/trending/all/day';
 const SEARCH_MOVIE_URL = '/search/movie';
+const DISCOVER_MOVIE_URL = '/discover/movie';
 const GENRE_MOVIE_LIST_URL = '/genre/movie/list';
 const GENRE_TV_LIST_URL = '/genre/tv/list';
 const TRENDING_DAY_URL = '/trending/movie/day';
@@ -48,6 +49,15 @@ const fetchInputMovieTitle = async (page, movieTitle) => {
 // Pobranie pojedyńczego filmu/serialu przez Id. Opcje dla type to domyślnie 'movie' (parametr opcjonalny) lub serial 'tv'.
 const fetchMovieById = async (movieId, type = 'movie') => {
   const response = await fetch(`${BASE_URL}/${type}/${movieId}${API_KEY}`);
+  const responseObject = await response.json();
+  return responseObject;
+};
+
+// Pobranie filmów dla gatunku.
+const fetchMoviesByGenre = async (page, genre) => {
+  const response = await fetch(
+    `${BASE_URL}${DISCOVER_MOVIE_URL}${API_KEY}&page=${page}&include_adult=false&with_genres=${genre}`,
+  );
   const responseObject = await response.json();
   return responseObject;
 };
@@ -84,16 +94,14 @@ let renderMoviesFirstLoad = async data => {
                         <p class="movie-card__genre-and-year">
                             <span class="movie-card__genre">${genre_ids
                               .map(id => genreName[id])
-                              .splice(0,2)
+                              .splice(0, 2)
                               .join(', ')}</span>
-                            <span class="movie-card__year">| ${(
-                              release_date
-                                ? release_date
-                                : first_air_date
-                                ? first_air_date
-                                : 'no-data')
-                                .slice(0,4)
-                            }</span>
+                            <span class="movie-card__year">| ${(release_date
+                              ? release_date
+                              : first_air_date
+                              ? first_air_date
+                              : 'no-data'
+                            ).slice(0, 4)}</span>
                         </p>
                         <p class="movie-card__vote-average">${vote_average.toFixed(2)}</p>
                     </div>
@@ -138,16 +146,14 @@ let renderMoviesInputTitle = async data => {
                         <p class="movie-card__genre-and-year">
                             <span class="movie-card__genre">${genre_ids
                               .map(id => genreName[id])
-                              .splice(0,2)
+                              .splice(0, 2)
                               .join(', ')}</span>
-                            <span class="movie-card__year">${(
-                              release_date
-                                ? release_date
-                                : first_air_date
-                                ? first_air_date
-                                : 'no-data')
-                                .slice(0,4)
-                            }</span>
+                            <span class="movie-card__year">${(release_date
+                              ? release_date
+                              : first_air_date
+                              ? first_air_date
+                              : 'no-data'
+                            ).slice(0, 4)}</span>
                         </p>
                         <p class="movie-card__vote-average">${vote_average.toFixed(2)}</p>
                     </div>
@@ -164,7 +170,9 @@ let renderMoviesInputTitle = async data => {
 // z obu podzbiorów bazy danych: Movie oraz TV
 
 const getAllGenres = async () => {
-  const responseGenresMovie = await fetch(`${BASE_URL}${GENRE_MOVIE_LIST_URL}${API_KEY}&language=en-US`);
+  const responseGenresMovie = await fetch(
+    `${BASE_URL}${GENRE_MOVIE_LIST_URL}${API_KEY}&language=en-US`,
+  );
   const responseGenresTV = await fetch(`${BASE_URL}${GENRE_TV_LIST_URL}${API_KEY}&language=en-US`);
 
   const genresMovieList = await responseGenresMovie.json();
@@ -182,7 +190,6 @@ let genreResponse;
 
 let allGenresListMain;
 console.log(allGenresListMain);
-
 
 // ZNALEZIENIE NAZW GATUNKÓW FILMÓW Z ICH NUMERÓW ID
 
@@ -256,10 +263,8 @@ function parsGenres(genresId, genresList) {
 
 //-----------------------------------------------------------------//
 
-
 // PAGINACJA
-const pagination = async (totalPages, title) => {
-};
+const pagination = async (totalPages, title) => {};
 
 export {
   inputFormButton,
@@ -270,6 +275,7 @@ export {
   fetchFirstLoadMovies,
   fetchInputMovieTitle,
   fetchMovieById,
+  fetchMoviesByGenre,
   renderMoviesFirstLoad,
   renderMoviesInputTitle,
   pagination,

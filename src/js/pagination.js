@@ -1,13 +1,15 @@
 import {
   fetchFirstLoadMovies,
   fetchInputMovieTitle,
+  fetchMoviesByGenre,
   renderMoviesFirstLoad,
   renderMoviesInputTitle,
 } from './fetchData';
 import { addModalListenerFunction } from './modal';
 const paginationContainer = document.querySelector('.pagination-container');
 
-const createPagination = ({ page, total_pages }, query = '') => {
+const createPagination = ({ page, total_pages }, query = '', genre = '') => {
+  if (total_pages > 500) total_pages = 500;
   paginationContainer.innerHTML = '';
   //Creating main helper elements.
   const mainDiv = document.createElement('div');
@@ -50,6 +52,29 @@ const createPagination = ({ page, total_pages }, query = '') => {
       next.ariaDisabled = true;
       last.ariaDisabled = true;
     }
+  } else if (genre != '') {
+    first.addEventListener('click', () => {
+      createLinkGenreMovie(1, genre);
+    });
+    last.addEventListener('click', () => {
+      createLinkGenreMovie(total_pages, genre);
+    });
+    if (page > 1) {
+      previous.addEventListener('click', () => {
+        createLinkGenreMovie(page - 1, genre);
+      });
+    } else {
+      previous.ariaDisabled = true;
+      first.ariaDisabled = true;
+    }
+    if (page < total_pages) {
+      next.addEventListener('click', () => {
+        createLinkGenreMovie(page + 1, genre);
+      });
+    } else {
+      next.ariaDisabled = true;
+      last.ariaDisabled = true;
+    }
   } else {
     first.addEventListener('click', () => {
       createLinkAllMovies(1);
@@ -81,7 +106,7 @@ const createPagination = ({ page, total_pages }, query = '') => {
   } else if (total_pages > 1 && total_pages < 6) {
     mainDiv.appendChild(first);
     mainDiv.appendChild(previous);
-    generateMainPagesButtons(page, total_pages, query, mainDiv);
+    generateMainPagesButtons(page, total_pages, query, mainDiv, genre);
     mainDiv.appendChild(next);
     mainDiv.appendChild(last);
   } else {
@@ -90,7 +115,7 @@ const createPagination = ({ page, total_pages }, query = '') => {
     if (page > 3) {
       mainDiv.appendChild(threeDots1);
     }
-    generateMainPagesButtons(page, total_pages, query, mainDiv);
+    generateMainPagesButtons(page, total_pages, query, mainDiv, genre);
     if (page + 2 < total_pages) {
       mainDiv.appendChild(threeDots2);
     }
@@ -101,7 +126,7 @@ const createPagination = ({ page, total_pages }, query = '') => {
 };
 
 //Function for creating main anchor tags for pages with listeners
-const generateMainPagesButtons = (page, total_pages, query, mainDiv) => {
+const generateMainPagesButtons = (page, total_pages, query, mainDiv, genre) => {
   let tempPage = page;
   if (page == 2) tempPage = page - 1;
   if (page == 3) tempPage = page - 2;
@@ -117,6 +142,10 @@ const generateMainPagesButtons = (page, total_pages, query, mainDiv) => {
       if (query != '') {
         pageAnchor.addEventListener('click', () => {
           createLinkInputMovie(index, query);
+        });
+      } else if (genre != '') {
+        pageAnchor.addEventListener('click', () => {
+          createLinkGenreMovie(index, genre);
         });
       } else {
         pageAnchor.addEventListener('click', () => {
@@ -157,6 +186,10 @@ const generateMainPagesButtons = (page, total_pages, query, mainDiv) => {
         pageAnchor.addEventListener('click', () => {
           createLinkInputMovie(index, query);
         });
+      } else if (genre != '') {
+        pageAnchor.addEventListener('click', () => {
+          createLinkGenreMovie(index, genre);
+        });
       } else {
         pageAnchor.addEventListener('click', () => {
           createLinkAllMovies(index);
@@ -180,6 +213,13 @@ const createLinkInputMovie = async (page, query) => {
   await renderMoviesInputTitle(data.results);
   addModalListenerFunction();
   createPagination(data, query);
+};
+const createLinkGenreMovie = async (page, genre) => {
+  let data = await fetchMoviesByGenre(page, genre);
+  data.results = data.results.filter(movie => !('gender' in movie));
+  await renderMoviesInputTitle(data.results);
+  addModalListenerFunction();
+  createPagination(data, '', genre);
 };
 
 export { createPagination };
