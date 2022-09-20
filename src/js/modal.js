@@ -39,6 +39,7 @@ const getMovieAndDisplayModal = async (id, type) => {
   modalElement.classList.remove('is-hidden');
 
   let modalHTML = `
+  <div class="modal">
       <ul class="modal__pic">
           <li class="pic">
               <picture>
@@ -90,7 +91,7 @@ const getMovieAndDisplayModal = async (id, type) => {
 
           <button class="modal__close-btn" type="button">
               <svg class="modal__close-icon" width="18" height="18" data-modal-close>
-                  <use xlink:href="../images/svg/modal-close-btn.svg#close-btn"></use>
+              <use xlink:href="/images/svg/modal-close-btn.svg#close-btn"></use>
               </svg>
           </button>
         
@@ -132,7 +133,8 @@ const getMovieAndDisplayModal = async (id, type) => {
                     <li></li>
                 </ul>
             </ul>
-        </ul>`;
+        </ul>
+  </div>`;
   modalElement.innerHTML = modalHTML;
   let watchedBtn = document.querySelector('.watched-btn');
   let queueBtn = document.querySelector('.queue-btn');
