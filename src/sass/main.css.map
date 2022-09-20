@@ -11,6 +11,7 @@
         "components/_btn.scss",
         "components/_spinner.scss",
         "components/_toggler.scss",
+        "components/_btn-go-top.scss",
         "components/_spinner.scss",
         "components/_pagination.scss",
         "layout/_header.scss",

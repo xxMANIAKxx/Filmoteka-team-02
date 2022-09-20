@@ -203,7 +203,7 @@ img {
 }
 
 .header__toggle-label:after {
-  content: "";
+  content: '';
   width: 18px;
   height: 18px;
   position: absolute;
@@ -345,7 +345,7 @@ body.dark-theme .modal__close-btn:hover, body.dark-theme .modal__close-btn:focus
   cursor: pointer;
   color: black;
   float: left;
-  padding: 13px 11px;
+  padding: 8px 16px;
   text-decoration: none;
 }
 
@@ -367,6 +367,30 @@ body.dark-theme .modal__close-btn:hover, body.dark-theme .modal__close-btn:focus
 
 .pagination a:hover:not(.active):not([aria-disabled='true']) {
   background-color: #ddd;
+}
+
+.go-top {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: right;
+      -ms-flex-pack: right;
+          justify-content: right;
+  margin-right: 250px;
+}
+
+.go-top-button {
+  width: 60px;
+  height: 60px;
+  border: none;
+  border-radius: 50%;
+  color: #fff;
+  background-color: #ff6b08;
+}
+
+.go-top-button:hover {
+  cursor: pointer;
+  background-color: #ff944d;
 }
 
 .header {
