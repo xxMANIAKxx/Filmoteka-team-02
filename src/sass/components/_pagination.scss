@@ -12,11 +12,16 @@
     cursor: pointer;
     color: black;
     float: left;
-    padding: 8px 16px;
+    padding: 13px 11px;
     text-decoration: none;
+    
     &.active {
-      background-color: #4caf50;
+      background-color: #FF6B08;
       color: white;
+      border-radius: 5px;
+      width: 40px;
+      height: 40px;
+      justify-content: center;
     }
   }
   & [aria-disabled='true'] {
