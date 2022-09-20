@@ -2,8 +2,8 @@
   width: 100%;
   display: flex;
   justify-content: center;
-  padding-top: 20px;
-  padding-bottom: 20px;
+  padding-top: 40px;
+  padding-bottom: 40px;
 }
 .pagination {
   display: inline-block;
@@ -25,6 +25,7 @@
       width: 40px;
       height: 40px;
       justify-content: center;
+      align-items: center;
     }
   }
   & [aria-disabled='true'] {
@@ -33,6 +34,27 @@
   }
 
   & a:hover:not(.active):not([aria-disabled='true']) {
-    background-color: #ddd;
+    background-color: #F7F7F7;
   }
 }
+
+@media screen and (min-width: 768px) and (max-width: 1023px) {
+  .pagination-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding-top: 50px;
+    padding-bottom: 60px;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .pagination-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding-top: 46px;
+    padding-bottom: 60px;
+  }
+}
+

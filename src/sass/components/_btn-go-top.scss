@@ -1,0 +1,19 @@
+.go-top {
+  display: flex;
+  justify-content: right;
+  margin-right: 250px;
+}
+
+.go-top-button {
+  width: 60px;
+  height: 60px;
+  border: none;
+  border-radius: 50%;
+  color: #fff;
+  background-color: #ff6b08;
+}
+
+.go-top-button:hover {
+  cursor: pointer;
+  background-color: #ff944d;
+}
