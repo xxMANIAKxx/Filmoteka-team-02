@@ -146,11 +146,12 @@
         border: $orange solid 1px;
         
         cursor: pointer;
+        transition: $shift;
 
         &:hover,
         &:focus {
             background-color: $orange;
-            fill: #fff;
+            fill: $white;
         }
     }
 
