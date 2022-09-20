@@ -17,7 +17,7 @@
       <nav class="navigation">
         <ul class="navigation__list">
           <li class="navigation__item list">
-            <a class="navigation__link link" href="index.html">home</a>
+            <a class="navigation__link navigation__link--active link" href="index.html">home</a>
           </li>
           <li class="navigation__item list">
             <a class="navigation__link link" id="library-btn" href="library.html">my library</a>
@@ -30,12 +30,7 @@
     <div class="header__search-form">
       <form class="search-form__container" autocomplete="off" id="home">
         <label class="search-form__label">
-          <input
-            type="text"
-            name="searchQuery"
-            placeholder="Movie search"
-            class="search-form__input"
-          />
+          <input type="text" name="searchQuery" placeholder="Movie search" class="search-form__input" />
         </label>
         <button class="search-form__btn btn js-form-btn" type="submit">
           <svg class="search-form__btn-icon" width="12" height="12">
@@ -50,7 +45,7 @@
     <div class="header__tools">
       <div class="header__genre">
         <select class="genre">
-          <option class="header__genre-option" value="">Choose genre</option>
+          <option class="header__genre-option" disabled selected>Choose genre</option>
           <option class="genre-choice" value="Action">Action</option>
           <option class="genre-choice" value="Adventure">Adventure</option>
           <option class="genre-choice" value="Animation">Animation</option>

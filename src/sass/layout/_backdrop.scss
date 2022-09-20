@@ -2,8 +2,9 @@
   .backdrop {
     position: fixed;
     overflow-y: scroll;
-    top: 20px;
-    left: 20px;
+    top: 50%;
+    right: 50%;
+    transform: translate(50%, -50%);
     width: 280px;
     height: auto;
     background-color: #ffffff;
@@ -12,8 +13,7 @@
     opacity: 1;
     transition: $shift;
     border-radius: 5px;
-    box-shadow: inset 0 0 10px 5px rgba(0, 0, 0, 0.3);
-
+    border: 1px solid black;
   }
 
   .backdrop::-webkit-scrollbar {
@@ -47,8 +47,9 @@
   .backdrop {
     position: fixed;
     overflow-y: scroll;
-    top: 231px;
-    left: 75px;
+    top: 50%;
+    right: 50%;
+    transform: translate(50%, -50%);
     width: 618px;
     height: auto;
     background-color: #ffffff;
@@ -91,8 +92,9 @@
   .backdrop {
     position: fixed;
     overflow-y: scroll;
-    top: 100px;
-    left: 71px;
+    top: 50%;
+    right: 50%;
+    transform: translate(50%, -50%);
     width: 882px;
     height: auto;
     background-color: #ffffff;

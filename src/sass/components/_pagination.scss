@@ -12,11 +12,14 @@
     cursor: pointer;
     color: black;
     float: left;
-    padding: 13px 11px;
+    display: flex;
+    justify-content: center;
+    justify-items: center;
+    padding: 11px;
     text-decoration: none;
-    
+
     &.active {
-      background-color: #FF6B08;
+      background-color: #ff6b08;
       color: white;
       border-radius: 5px;
       width: 40px;
