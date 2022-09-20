@@ -11,7 +11,7 @@ const noPosterImage = require('../images/misc/no_picture.jpg');
 // Scenariusz 1: FIRST LOAD
 // Scenariusz 2: SEARCH MOVIE
 // Scenariusz 3: GENRE SELECT
-// Scenariusz 4: TRENDING DAY / TRENDING WEEK
+// Scenariusz 4: TRENDING DAY / TRENDING WEEK (Klient odrzucił tę funkcjonalność :)
 
 // Ustalanie gatunku/gatunków filmu
 // Paginacja
@@ -27,7 +27,7 @@ const TRENDING_DAY_URL = '/trending/movie/day';
 const TRENDING_WEEK_URL = '/trending/movie/week';
 
 // Scenariusz 1: FIRST LOAD krok 1
-// Pobranie danych do galerii, która wyświetla się po WEJŚCIU na stronę
+// Pobranie danych (filmów) do galerii, która wyświetla się po WEJŚCIU na stronę
 const fetchFirstLoadMovies = async page => {
   const response = await fetch(
     `${BASE_URL}${MAIN_PAGE_URL}${API_KEY}&page=${page}&include_adult=false`,
@@ -37,7 +37,7 @@ const fetchFirstLoadMovies = async page => {
 };
 
 // Scenariusz 2: SEARCH MOVIE krok 1
-// Pobranie danych do galerii, która wyświetla się po WPISANIU FILMU
+// Pobranie danych (filmów) do galerii, która wyświetla się po WPISANIU FILMU
 const fetchInputMovieTitle = async (page, movieTitle) => {
   const response = await fetch(
     `${BASE_URL}${SEARCH_MOVIE_URL}${API_KEY}&query=${movieTitle}&page=${page}&include_adult=false`,
@@ -53,7 +53,8 @@ const fetchMovieById = async (movieId, type = 'movie') => {
   return responseObject;
 };
 
-// Pobranie filmów dla gatunku.
+// Scenariusz 3: SEARCH MOVIE krok 1
+// Pobranie danych (filmów) do galerii, która wyświetla się po WYBRANIU GATUNKU z LISTY ROZWIJANEJ
 const fetchMoviesByGenre = async (page, genre) => {
   const response = await fetch(
     `${BASE_URL}${DISCOVER_MOVIE_URL}${API_KEY}&page=${page}&include_adult=false&with_genres=${genre}`,
@@ -204,7 +205,7 @@ const getMovieGenresNames = async () => {
 
 let printAllGenresList = () => {
   genresList.innerHTML = '';
-  const markup = allGenresListMenu
+  const markup = allGenresListMain
     .map(genre => {
       return `
                 <div>
@@ -220,46 +221,6 @@ let printAllGenresList = () => {
 
 printAllGenresList;
 
-/*
-
-//-----------------------------------------------------------------//
-
-let genresList = [];
-
-
-// Funkcja, która pyta o gatunki i zwraca je na liście rozwijanej
-
-function fetchIDFilms() {
-  return newFilmsBandle
-    .onFetchId()
-    .then(genres => {
-      genresList = genres;
-      renderGenresList(genres);
-      return genresList;
-    })
-    .then(genresList => localeStorageServices.save('FilmIDs', genresList))
-    .catch(console.log);
-}
-
-
-
-
-// Funkcja zmieniająca identyfikatory gatunków na ich NAZWY
-
-function parsGenres(genresId, genresList) {
-  const nameGenres = [];
-  for (let i = 0; i <= genresId.length; i += 1) {
-    genresList.map(({ id, name }) => {
-      if (id === genresId[i]) {
-        nameGenres.push(name);
-      }
-    });
-  }
-  return nameGenres;
-}
-
-
-*/
 
 //-----------------------------------------------------------------//
 
