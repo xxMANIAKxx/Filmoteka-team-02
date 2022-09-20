@@ -91,4 +91,22 @@ body.dark-theme {
             border-color: $orange;
         }
     }
+
+    .styledSelect,
+    .styledSelect:active,
+    .styledSelect.active {
+      background-color: $gray55;
+    }
+
+    .options li {
+      background-color: $eerie;
+      color: $gray55;
+
+      &:hover,
+      &:focus {
+          background-color: $orange;
+          color: $white;
+        }
+    }
+
 }
