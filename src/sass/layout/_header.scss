@@ -243,6 +243,11 @@
     background: transparent;
     outline: none;
     right: 0px;
+
+    &:focus,
+    &:hover {
+      fill: $orange;
+    }
   }
 }
 
@@ -262,23 +267,23 @@
   justify-content: flex-end;
 }
 
-.header__genre {
-  & > select {
-    width: 117px;
-    font-size: 12px;
-    border-radius: 8px;
-    height: 35px;
-    cursor: pointer;
-  }
-}
+// .header__genre {
+//   & > select {
+//     width: 117px;
+//     font-size: 12px;
+//     border-radius: 8px;
+//     height: 35px;
+//     cursor: pointer;
+//   }
+// }
 
-.select-items {
-  background-color: $orange;
-}
+// .select-items {
+//   background-color: $orange;
+// }
 
-.genre {
-  transition: $shift;
-}
+// .genre {
+//   transition: $shift;
+// }
 
 // === LIBRARY btns ===
 .library {
