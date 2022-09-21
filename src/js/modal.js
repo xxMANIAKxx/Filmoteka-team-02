@@ -2,6 +2,7 @@ import { fetchMovieById, galleryOfMovies, noPosterImage } from './fetchData';
 import { getAllLibraryMovies } from './libraryHelper';
 import { addToLibrary, load, removeFromLibrary } from './utils';
 const modalElement = document.querySelector('[data-modal]');
+const closeBtn = require('../images/svg/symbol-defs.svg');
 
 document.addEventListener('click', event => {
   if (event.target.matches('[data-modal-close]') || !event.target.closest('.modal')) {
@@ -92,8 +93,8 @@ const getMovieAndDisplayModal = async (id, type) => {
           </li>
 
           <button class="modal__close-btn" type="button">
-              <svg class="modal__close-icon" width="18" height="18" data-modal-close>
-              <use xlink:href="/images/svg/modal-close-btn.svg#close-btn"></use>
+              <svg class="modal__close-icon" viewBox="-3 -3 60 55" data-modal-close>
+              <use xlink:href="${closeBtn}#icon-close"></use>
               </svg>
           </button>
         
