@@ -23,15 +23,13 @@
     cursor: pointer;
     transition: $shift;
 
+    fill: $black;
+    background-color: #f7f7f7;
+
     &:hover,
     &:focus {
-        fill: $orange;
-        border-color: $orange;
+        fill: $white;
+        background-color: $orange;
     }
 
-}
-
-.modal__close-icon {
-    color: $black;
-    fill: $black;
 }

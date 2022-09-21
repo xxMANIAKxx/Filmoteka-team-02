@@ -72,23 +72,47 @@ body.dark-theme {
 
   .footer,
   .genre,
-  .backdrop {
+  .modal {
     background-color: $eerie;
   }
 
-    .movie-card__title {
-        font-weight: 400;
-    }
+  .movie-card__title {
+    font-weight: 400;
+  }
 
-    .modal__close-btn {
-        fill: $gray55;
-        background-color: $eerie;
-        border-color: $gray55;
+  .modal__close-btn {
+    fill: $gray55;
+    border-color: $gray55;
 
-        &:hover,
-        &:focus {
-            fill: $orange;
-            border-color: $orange;
-        }
+    &:hover,
+    &:focus {
+      fill: $orange;
+      border-color: $orange;
     }
+  }
+
+  .styledSelect,
+  .styledSelect:active,
+  .styledSelect.active {
+    background-color: $gray55;
+  }
+
+  .options li {
+    background-color: $eerie;
+    color: $gray55;
+
+    &:hover,
+    &:focus {
+      background-color: $orange;
+      color: $white;
+    }
+  }
+  .pagination a {
+    color: $white;
+  }
+
+  .votes__mark {
+    background-color: #505050;
+    color: $white;
+  }
 }

@@ -243,6 +243,11 @@
     background: transparent;
     outline: none;
     right: 0px;
+
+    &:focus,
+    &:hover {
+      fill: $orange;
+    }
   }
 }
 
@@ -262,22 +267,16 @@
   justify-content: flex-end;
 }
 
-.header__genre {
-  & > select {
-    width: 117px;
-    font-size: 12px;
-    border-radius: 8px;
-    height: 35px;
-    cursor: pointer;
-  }
+.genre,
+.genre-choice {
+  font: normal 11px/22px Arial, Sans-Serif;
+  color: $black;
+  border: 1px solid #ccc;
 }
 
-.select-items {
-  background-color: $orange;
-}
-
-.genre {
-  transition: $shift;
+.header__genre-option {
+  padding: 0 10px;
+  font-weight: bold;
 }
 
 // === LIBRARY btns ===

@@ -9,7 +9,7 @@ import { addModalListenerFunction } from './modal';
 const paginationContainer = document.querySelector('.pagination-container');
 
 const createPagination = ({ page, total_pages }, query = '', genre = '') => {
-  if (total_pages > 500) total_pages = 500;
+  if (total_pages > 500 && (query != '' || genre != '')) total_pages = 500;
   paginationContainer.innerHTML = '';
   //Creating main helper elements.
   const mainDiv = document.createElement('div');

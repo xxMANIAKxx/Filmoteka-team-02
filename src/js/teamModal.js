@@ -6,6 +6,12 @@ team_open.addEventListener('click', () => {
   team_box.classList.remove('is-hidden');
 });
 
+document.addEventListener('keydown', e => {
+  if (e.code === 'Escape') {
+    team_box.classList.add('is-hidden');
+  }
+});
+
 team_close.addEventListener('click', () => {
   team_box.classList.add('is-hidden');
 });
