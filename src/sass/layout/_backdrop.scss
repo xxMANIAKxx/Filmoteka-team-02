@@ -11,6 +11,8 @@
     opacity: 1;
     transition: $shift;
     border-radius: 5px;
+    padding-left:20px;
+    padding-right: 20px;
   }
 
   .backdrop::-webkit-scrollbar {
