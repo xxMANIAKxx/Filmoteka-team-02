@@ -28,14 +28,23 @@ window.addEventListener('load', async event => {
 // Scenariusz 2: SEARCH MOVIE krok 3
 // Nasłuchiwanie zdarzenia wpisania filmu w input
 inputFormButton.addEventListener('click', async event => {
+  document.querySelector('.styledSelect').innerHTML = 'Choose genre';
   event.preventDefault();
   const movieTitle = inputFormTitle.value.trim();
   try {
-    const array = await fetchInputMovieTitle(1, movieTitle);
-    await renderMoviesInputTitle(array.results);
-    addModalListenerFunction();
-    console.log(array);
-    createPagination(array, movieTitle);
+    if (movieTitle != '') {
+      const array = await fetchInputMovieTitle(1, movieTitle);
+      await renderMoviesInputTitle(array.results);
+      addModalListenerFunction();
+      console.log(array);
+      createPagination(array, movieTitle);
+    } else {
+      const array = await fetchFirstLoadMovies(1);
+      await renderMoviesFirstLoad(array.results);
+      addModalListenerFunction();
+      console.log(array);
+      createPagination(array);
+    }
   } catch (error) {
     console.error(error);
   }

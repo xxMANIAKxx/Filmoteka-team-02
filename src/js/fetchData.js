@@ -190,7 +190,6 @@ const getAllGenres = async () => {
 let genreResponse;
 
 let allGenresListMain;
-console.log(allGenresListMain);
 
 // ZNALEZIENIE NAZW GATUNKÓW FILMÓW Z ICH NUMERÓW ID
 
@@ -221,11 +220,7 @@ let printAllGenresList = () => {
 
 printAllGenresList;
 
-
 //-----------------------------------------------------------------//
-
-// PAGINACJA
-const pagination = async (totalPages, title) => {};
 
 export {
   inputFormButton,
@@ -239,6 +234,5 @@ export {
   fetchMoviesByGenre,
   renderMoviesFirstLoad,
   renderMoviesInputTitle,
-  pagination,
   noPosterImage,
 };

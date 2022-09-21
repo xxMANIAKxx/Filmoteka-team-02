@@ -55,7 +55,7 @@ const removeFromLibrary = (movieId, type, listType = 'watchedList') => {
   let libraryList = load(listType);
 
   libraryList = libraryList.filter(movie => {
-    if (movie.movieId != movieId && movie.type != type) {
+    if (movie.movieId != movieId) {
       return movie;
     }
   });

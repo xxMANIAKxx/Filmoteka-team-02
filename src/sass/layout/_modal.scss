@@ -7,19 +7,19 @@
 }
 
 @media screen and (min-width: 320px) and (max-width: 767px) {
-  .modal{
-    position:relative;
-    top:10%;
-    left:50%;
-    transform:translate(-50%,-50%);
-    width:280px;
-    min-height:958px;
-    background-color:#ffffff;
+  .modal {
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 280px;
+    min-height: 958px;
+    background-color: #ffffff;
     border-radius: 4px;
-    padding:48px 20px 41px 20px;
+    padding: 48px 20px 41px 20px;
     box-shadow: inset 0 0 10px 5px rgba(247, 85, 40, 0.8);
   }
-  
+
   .modal__pic,
   .modal__description,
   .description__vote,
@@ -199,16 +199,16 @@
 }
 
 @media screen and (min-width: 768px) and (max-width: 1023px) {
-  .modal{
-    position:relative;
-    top:10%;
-    left:50%;
-    transform:translate(-50%,-50%);
-    width:618px;
-    min-height:562px;
-    background-color:#ffffff;
+  .modal {
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 618px;
+    min-height: 562px;
+    background-color: #ffffff;
     border-radius: 4px;
-    padding:42px 30px 40px 28px;
+    padding: 42px 30px 40px 28px;
     box-shadow: inset 0 0 10px 5px rgba(247, 85, 40, 0.8);
   }
 
@@ -380,16 +380,16 @@
 }
 
 @media screen and (min-width: 1024px) {
-  .modal{
-    position:relative;
-    top:10%;
-    left:50%;
-    transform:translate(-50%,-50%);
-    width:882px;
-    min-height:568px;
-    background-color:#ffffff;
+  .modal {
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 882px;
+    min-height: 568px;
+    background-color: #ffffff;
     border-radius: 4px;
-    padding:50px 30px 40.2px 30px;
+    padding: 50px 30px 40.2px 30px;
     box-shadow: inset 0 0 10px 5px rgba(247, 85, 40, 0.8);
   }
 
@@ -522,40 +522,40 @@
     color: #000000;
   }
 
- .watched-btn,
- .queue-btn {
-   width: 112px;
-   height: 44px;
-   background-color: $white;
-   border: 1px solid #000000;
-   border-radius: 5px;
-   font-family: 'Roboto';
-   font-weight: 500;
-   font-size: 12px;
-   line-height: 1.33;
-   display: flex;
-   justify-content: center;
-   align-items: center;
-   text-align: center;
-   text-transform: uppercase;
-   color: $black;
-   margin-left: 15px;
-   margin-top: 21px;
-   cursor: pointer;
+  .watched-btn,
+  .queue-btn {
+    width: 112px;
+    height: 44px;
+    background-color: $white;
+    border: 1px solid #000000;
+    border-radius: 5px;
+    font-family: 'Roboto';
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 1.33;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    text-transform: uppercase;
+    color: $black;
+    margin-left: 15px;
+    margin-top: 21px;
+    cursor: pointer;
 
-   &:hover,
-   &:focus {
-     background-color: $orange;
-     color: $white;
-     border: 1px solid $orange;
-   }
+    &:hover,
+    &:focus {
+      background-color: $orange;
+      color: $white;
+      border: 1px solid $orange;
+    }
 
-   @media screen and (min-width: 768px) and (max-width: 1023px) {
-     width: 125px;
-   }
+    @media screen and (min-width: 768px) and (max-width: 1023px) {
+      width: 125px;
+    }
 
-   @media screen and (min-width: 1024px) {
-     width: 136px;
-   }
- }
- }
+    @media screen and (min-width: 1024px) {
+      width: 136px;
+    }
+  }
+}
