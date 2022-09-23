@@ -303,7 +303,7 @@ body.dark-theme .votes__mark {
 .go-top-button:hover {
   cursor: pointer;
   background-color: #FF6B08;
-  color: #FF6B08;
+  color: #ffffff;
   border-color: #FF6B08;
   -webkit-box-shadow: 0px 0px 28px 0px #ff6b08;
   box-shadow: 0px 0px 28px 0px #ff6b08;
