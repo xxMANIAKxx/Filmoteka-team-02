@@ -46,6 +46,10 @@
 <path d="M8 22L22 8" stroke="black" stroke-width="2"/>
 </symbol>
 
+<!-- Icon up-arrow -->
+<symbol id="arrow-up" viewBox="0 0 64 64">
+<polygon points="30.366,0 0.625,29.735 17.998,29.735 18.003,60.731 42.733,60.729 42.733,29.735 60.107,29.735"/>
+</symbol>
 
 </defs>
 </svg>
