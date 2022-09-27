@@ -25,8 +25,8 @@
     &:hover,
     &:active {
       cursor: pointer;
-      background-color: $orange;
-      color: $white;
+      background-color: $white;
+      color: #cc5200;
       border-color: $orange;
       -webkit-box-shadow: 0px 0px 28px 0px rgba(255, 107, 8, 1);
       -moz-box-shadow: 0px 0px 28px 0px rgba(255, 107, 8, 1);
@@ -40,7 +40,7 @@
     }
   }
   &-icon {
-    width: 23px;
-    height: 23px;
+    width: 20px;
+    height: 20px;
   }
 }
