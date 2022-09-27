@@ -34,13 +34,6 @@
       width: 100%;
       min-height: 356.57px;
       height: auto;
-
-      &:hover,
-      &:focus {
-        cursor: pointner;
-        box-shadow: 7px -7px 21px rgba(255, 107, 1, 0.6);
-        opacity: 0.5;
-      }
     }
   }
 
@@ -226,12 +219,6 @@
 
     & img {
       border-radius: 5px;
-      &:hover,
-      &:focus {
-        cursor: pointner;
-        box-shadow: 7px -7px 21px rgba(255, 107, 1, 0.6);
-        opacity: 0.5;
-      }
     }
   }
 
@@ -410,12 +397,6 @@
       width: 396px;
       height: 477.8px;
       border-radius: 5px;
-      &:hover,
-      &:focus {
-        cursor: pointner;
-        box-shadow: 7px -7px 21px rgba(255, 107, 1, 0.6);
-        opacity: 0.5;
-      }
     }
   }
 
