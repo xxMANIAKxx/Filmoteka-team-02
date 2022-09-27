@@ -15,4 +15,4 @@ module.exports="/Filmoteka-team-02/symbol-defs.756dd9f3.svg";
 },{"./fetchData":"rV7j","./modal":"RSqK"}],"I9BA":[function(require,module,exports) {
 "use strict";require("./sass/main.scss");var e=require("./js/utils"),s=require("./js/libraryHelper");const t=document.querySelector("[js-btn-watched]"),r=document.querySelector("[js-btn-queue]");let i=(0,e.load)("watchedList");t.addEventListener("click",()=>{r.classList.remove("library__btn--selected"),t.classList.add("library__btn--selected"),i=(0,e.load)("watchedList"),(0,s.getAllLibraryMovies)(i,"watchedList")}),r.addEventListener("click",()=>{t.classList.remove("library__btn--selected"),r.classList.add("library__btn--selected"),i=(0,e.load)("queueList"),(0,s.getAllLibraryMovies)(i,"queueList")}),(0,s.getAllLibraryMovies)(i,"watchedList");
 },{"./sass/main.scss":"clu1","./js/utils":"MgTz","./js/libraryHelper":"qF0P"}]},{},["I9BA"], null)
-//# sourceMappingURL=/Filmoteka-team-02/library.37d7777e.js.map
+//# sourceMappingURL=/Filmoteka-team-02/library.cec7eae8.js.map
