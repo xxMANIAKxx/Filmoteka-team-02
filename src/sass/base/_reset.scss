@@ -5,6 +5,8 @@
 body {
     font-family: $main-font;
     transition: $shift;
+    letter-spacing: 0.10px;
+    line-height: 1.15;
 }
 
 html {

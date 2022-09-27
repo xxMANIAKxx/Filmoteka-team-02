@@ -11,4 +11,4 @@ window.addEventListener('scroll', () => {
 toTop.addEventListener('click', scrollToTop);
 function scrollToTop() {
   window.scrollTo(0, 0);
-}
+} 
